@@ -41,7 +41,7 @@
                         'sans': ['Lato', 'sans-serif'],
                     },
                     backgroundImage: {
-                       'hero-image': "url('/imagens/hero-sunset.jpg')",
+                       'hero-image': "url('imagens/hero-sunset.jpg')",
                     }
                 }
             }
@@ -240,7 +240,7 @@ const content = {
 const Logo = ({ className }) => {
   return (
     <img
-      src="/imagens/logo delta chales logo branca.png" // caminho da sua imagem
+      src="imagens/logo delta chales logo branca.png" // caminho da sua imagem
       alt="Delta Chalés Logo"
       className={className}
     />
@@ -303,7 +303,7 @@ const About = ({ content }) => {
                         </p>
                     </div>
                     <div>
-                        <img src="/imagens/delta-chales.jpg" alt="Pousada Delta Chalés" className="rounded-2xl shadow-xl w-full h-auto" />
+                        <img src="imagens/delta-chales.jpg" alt="Pousada Delta Chalés" className="rounded-2xl shadow-xl w-full h-auto" />
                     </div>
                 </div>
             </div>
@@ -358,7 +358,7 @@ const Experiences = ({ content }) => {
                             <p className="text-gray-600 leading-relaxed font-bold">{content.breakfast.text2}</p>
                         </div>
                         <div className="order-1 md:order-2">
-                             <img src="/imagens/breakfast.jpg" alt="Breakfast" className="rounded-2xl shadow-xl w-full h-auto" />
+                             <img src="imagens/breakfast.jpg" alt="Breakfast" className="rounded-2xl shadow-xl w-full h-auto" />
                         </div>
                     </div>
                 </div>
@@ -368,7 +368,7 @@ const Experiences = ({ content }) => {
                  <div className="container mx-auto px-4">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <div>
-                            <img src="/imagens/kitesurf.jpg" alt="Kitesurf" className="rounded-2xl shadow-xl w-full h-auto" />
+                            <img src="imagens/kitesurf.jpg" alt="Kitesurf" className="rounded-2xl shadow-xl w-full h-auto" />
                         </div>
                         <div>
                             <h3 className="font-serif text-3xl sm:text-4xl mb-4">{content.kitesurf.title}</h3>
@@ -397,9 +397,9 @@ const TourCard = ({ item, imageUrl }) => (
 
 const Tours = ({ content }) => {
     const images = [
-        "/imagens/praia.jpg",
-        "/imagens/quadriciclo.jpg",
-        "/imagens/lancha.jpg",
+        "imagens/praia.jpg",
+        "imagens/quadriciclo.jpg",
+        "imagens/lancha.jpg",
     ];
 
     return (
