@@ -1,24 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Delta Chalés Pousada</title>
+    <title>Pousada Delta Chalés em Tutóia, MA | Kitesurf, Delta do Parnaíba e Praia</title>
 
-    <title>Pousada Delta Chalés em Tutóia, MA | Kitesurf e Passeios</title>
+    <meta name="description" content="Pousada Delta Chalés em Tutóia, MA - Hospedagem ideal para kitesurf, passeios no Delta do Parnaíba e praia. Bungalows confortáveis, café da manhã na praia, kitesurf e aventuras. Reserve sua estadia!">
 
-    <meta name="description" content="Descubra a Pousada Delta Chalés em Tutóia, MA. Seu refúgio na Rota das Emoções, ideal para kitesurf e passeios no Delta. Conforto e natureza. Reserve já!">
+    <meta name="keywords" content="pousada tutóia, hotel tutóia, hospedagem tutóia, pousada em tutóia, kitesurf tutóia, kitesurf em tutóia, delta do parnaíba, delta do parnaíba tutóia, praia tutóia, arpoador tutóia, bungalow tutóia, rota das emoções, pousada delta chalés, turismo tutóia, passeios tutóia, lancha delta">
 
-    <meta name="keywords" content="pousada em tutóia, hotel em tutóia, hospedagem em tutóia, kitesurf tutóia, delta do parnaíba tutóia, pousada delta chalés">
-
-    <meta property="og:title" content="Pousada Delta Chalés em Tutóia, MA">
-    <meta property="og:description" content="Conforto, natureza e aventura (Kitesurf) na Rota das Emoções. Conheça a Pousada Delta Chalés.">
+    <meta property="og:title" content="Pousada Delta Chalés em Tutóia, MA - Kitesurf e Praia">
+    <meta property="og:description" content="Hospedagem em Tutóia para kitesurf, Delta do Parnaíba e praia. Bungalows confortáveis na Rota das Emoções.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="httpsDE_SEU_SITE_AQUI.com.br">
-    <meta property="og:image" content="httpsDE_SEU_SITE_AQUI.com.br/imagens/hero-sunset.jpg"> <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:url" content="https://www.deltachales.com.br">
+    <meta property="og:image" content="https://www.deltachales.com.br/imagens/hero-sunset.jpg">
+    
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Pousada Delta Chalés em Tutóia, MA">
-    <meta name="twitter:description" content="Seu refúgio na Rota das Emoções, ideal para Kitesurf e passeios no Delta.">
-    <meta name="twitter:image" content="httpsDE_SEU_SITE_AQUI.com.br/imagens/hero-sunset.jpg">
+    <meta name="twitter:description" content="Kitesurf, praia e Delta do Parnaíba - Hospedagem em Tutóia">
+    <meta name="twitter:image" content="https://www.deltachales.com.br/imagens/hero-sunset.jpg">
+    
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="language" content="Portuguese">
+    <meta name="author" content="Delta Chalés Pousada">
+    <link rel="canonical" href="https://www.deltachales.com.br">
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -59,12 +64,56 @@
     }
     </script>
 <link rel="stylesheet" href="/index.css">
+
+    <!-- Schema Estruturado para SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Pousada Delta Chalés",
+      "image": "https://www.deltachales.com.br/imagens/hero-sunset.jpg",
+      "description": "Pousada em Tutóia, MA especializada em kitesurf, passeios no Delta do Parnaíba e hospedagem na praia",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Tutóia",
+        "addressRegion": "MA",
+        "addressCountry": "BR"
+      },
+      "telephone": "+55 (86) 99583-4198",
+      "email": "pousadadeltachales@gmail.com",
+      "url": "https://www.deltachales.com.br",
+      "priceRange": "$$",
+      "amenityFeature": [
+        { "@type": "LocationFeatureSpecification", "name": "Kitesurf" },
+        { "@type": "LocationFeatureSpecification", "name": "Praia" },
+        { "@type": "LocationFeatureSpecification", "name": "Café da manhã" },
+        { "@type": "LocationFeatureSpecification", "name": "Passeios no Delta" },
+        { "@type": "LocationFeatureSpecification", "name": "WiFi grátis" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Delta Chalés Pousada",
+      "url": "https://www.deltachales.com.br",
+      "logo": "https://www.deltachales.com.br/imagens/logo delta chales logo preta.png",
+      "contact": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "telephone": "+55 (86) 99583-4198",
+        "email": "pousadadeltachales@gmail.com"
+      }
+    }
+    </script>
 </head>
 <body>
 <div id="root"></div>
 
 <script type="text/babel" data-type="module">
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 
 // --- ENUM & TYPES ---
@@ -89,23 +138,31 @@ const content = {
     about: {
       title: 'Delta Chalés',
       subtitle: 'Pousada',
-      text: 'Bem-vindo à Pousada Delta Chalés, seu refúgio entre o mar e o Delta. Aqui, o tempo desacelera. Cada detalhe foi pensado para que você vivencie momentos de tranquilidade, conforto e conexão com a natureza. Localizada em Tutóia - MA, nossa pousada une rusticidade, charme e hospitalidade em um cenário privilegiado, perfeito para quem busca relaxamento ou aventura na Rota das Emoções. A poucos minutos do Delta do Parnaíba e das belezas naturais da região, a Delta Chalés é mais do que um lugar para ficar, é uma experiência.',
+      text: 'Bem-vindo à Pousada Delta Chalés em Tutóia, MA, seu refúgio ideal entre o mar e o Delta do Parnaíba. Aqui, o tempo desacelera. Cada detalhe foi pensado para que você vivencie momentos de tranquilidade, conforto e conexão com a natureza. Localizada em Tutóia - MA, nossa pousada une rusticidade, charme e hospitalidade em um cenário privilegiado, perfeito para quem busca relaxamento ou aventura na Rota das Emoções. Se você é fã de kitesurf, está no lugar certo: nossas praias têm condições ideais para este esporte. A poucos minutos do Delta do Parnaíba, das praias de Tutóia (como Praia do Arpoador) e das belezas naturais da região, a Delta Chalés é mais do que um lugar para ficar, é uma experiência completa de turismo e lazer.',
     },
     accommodations: {
       title: 'Acomodações',
       subtitle: 'Nossos chalés são projetados para recebê-lo com simplicidade, charme e bem-estar.',
       items: [
         {
-          title: 'Chalé Essencial',
-          description: 'Perfeito para casais ou viajantes individuais, o Chalé Essencial oferece tudo que você precisa para relaxar em paz.',
+          title: 'Bungalow Mar',
+          description: 'Um refúgio aconchegante com vista privilegiada para o mar, perfeito para casais em busca de romance e tranquilidade.',
         },
         {
-          title: 'Kite House',
-          description: 'Ideal para quem busca uma conexão mais profunda com a natureza. Com uma varanda de frente para o jardim da pousada, este chalé convida a desacelerar e aproveitar o momento.',
+          title: 'Bungalow Kite',
+          description: 'Especialmente projetado para kitesurf lovers, com equipamentos de segurança e fácil acesso às melhores praias da região.',
         },
         {
-          title: 'Lagoa',
-          description: 'Projetado para famílias ou grupos de até 4 pessoas, o chalé Lagoa combina estilo rústico, conforto e amplitude.',
+          title: 'Bungalow do Vento',
+          description: 'Espaçoso e aconchegante, ideal para famílias. Oferece todas as comodidades para uma estadia confortável com crianças.',
+        },
+        {
+          title: 'Jardim Bungalow',
+          description: 'Integrado harmoniosamente à paisagem, oferece uma conexão única com a fauna e flora local da região.',
+        },
+        {
+          title: 'Bungalow Duna',
+          description: 'Nossa opção premium com acabamentos refinados, jacuzzi privativa e serviço de concierge 24h para máximo conforto.',
         },
       ],
     },
@@ -118,14 +175,14 @@ const content = {
       },
       kitesurf: {
         title: 'Kitesurf',
-        text: 'Tutóia tem as condições de vento perfeitas, e a Delta Chalés é a sua base ideal. Se você ama kitesurf, vai se sentir em casa. Nossa localização estratégica oferece fácil acesso aos melhores picos de kitesurf da região.',
+        text: 'Tutóia é conhecida mundialmente por suas condições ideais de kitesurf, e a Pousada Delta Chalés é sua base perfeita! Se você ama kitesurf em Tutóia, vai se sentir em casa. Nossa localização estratégica oferece fácil acesso aos melhores spots de kitesurf da região, como Praia do Arpoador e outras praias com vento consistente.',
         offerTitle: 'Oferecemos:',
-        offers: ['Guarda de equipamentos', 'Parcerias com instrutores e escolas de kite', 'Infraestrutura amigável ao kite'],
+        offers: ['Guarda segura de equipamentos de kitesurf', 'Parcerias com instrutores e escolas de kite profissionais', 'Infraestrutura amigável ao kitesurf', 'Dicas sobre as melhores ondas e condições de vento'],
       },
     },
     tours: {
-      title: 'Passeios & Atividades',
-      subtitle: 'Oferecemos experiências que conectam você à alma deste lugar, sempre com parceiros de confiança e o cuidado especial que começa aqui na pousada.',
+      title: 'Passeios & Atividades em Tutóia',
+      subtitle: 'Oferecemos experiências autênticas em Tutóia que conectam você ao Delta do Parnaíba, às praias e à natureza. Passeios de lancha, quadriciclo nas dunas, circuitos de praia - sempre com parceiros de confiança.',
       items: [
         {
           title: 'Circuito de Praia',
@@ -175,16 +232,24 @@ const content = {
       subtitle: 'Our chalets are designed to welcome you with simplicity, charm, and well-being.',
       items: [
         {
-          title: 'Essential Chalet',
-          description: 'Perfect for couples or solo travelers, the Essential Chalet offers everything you need to relax in peace.',
+          title: 'Sea Bungalow',
+          description: 'A cozy refuge with a privileged sea view, perfect for couples seeking romance and tranquility.',
         },
         {
-          title: 'Kite House',
-          description: 'Ideal for those seeking a deeper connection with nature. With a veranda facing the guesthouse garden, this chalet invites you to slow down and enjoy the moment.',
+          title: 'Kite Bungalow',
+          description: 'Specially designed for kitesurf lovers, with safety equipment and easy access to the best beaches in the region.',
         },
         {
-          title: 'Lagoa',
-          description: 'Designed for families or groups of up to 4 people, the Lagoa Chalet blends rustic style, comfort, and spaciousness.',
+          title: 'Wind Bungalow',
+          description: 'Spacious and cozy, ideal for families. It offers all amenities for a comfortable stay with children.',
+        },
+        {
+          title: 'Garden Bungalow',
+          description: 'Harmoniously integrated into the landscape, offering a unique connection with the local fauna and flora of the region.',
+        },
+        {
+          title: 'Dune Bungalow',
+          description: 'Our premium option with refined finishes, private jacuzzi, and 24h concierge service for maximum comfort.',
         },
       ],
     },
@@ -298,7 +363,7 @@ const About = ({ content }) => {
                             <h2 className="font-serif text-4xl mt-2">{content.title}</h2>
                             <p className="text-sm tracking-widest text-gray-500">{content.subtitle.toUpperCase()}</p>
                         </div>
-                        <p className="text-gray-600 leading-relaxed">
+                        <p className="text-brand-green leading-relaxed font-serif text-lg font-bold">
                             {content.text}
                         </p>
                     </div>
@@ -321,9 +386,11 @@ const AccommodationCard = ({ item, imageUrl }) => (
 
 const Accommodations = ({ content }) => {
     const images = [
-        "https://picsum.photos/seed/bed1/600/400",
-        "https://picsum.photos/seed/bed2/600/400",
-        "https://picsum.photos/seed/hut/600/400",
+        "imagens/Bungalow Mar.jpg",
+        "imagens/Bungalow kite.jpg",
+        "imagens/Bungalow do Vento.jpg",
+        "imagens/Jardim Bungalow.jpg",
+        "imagens/Bungalow Duna.jpg",
     ];
     
     return (
@@ -344,6 +411,32 @@ const Accommodations = ({ content }) => {
 const BulletIcon = () => (
     <svg className="w-4 h-4 mr-2 text-white/80 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
 );
+
+const ImageCarousel = ({ images }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        }, 4000);
+        return () => clearInterval(interval);
+    }, [images.length]);
+
+    return (
+        <div className="relative rounded-2xl shadow-xl w-full h-auto overflow-hidden">
+            {images.map((image, index) => (
+                <img
+                    key={index}
+                    src={image}
+                    alt={`Kitesurf ${index + 1}`}
+                    className={`w-full h-auto transition-opacity duration-1000 ${
+                        index === currentIndex ? 'opacity-100' : 'opacity-0 absolute inset-0'
+                    }`}
+                />
+            ))}
+        </div>
+    );
+};
 
 const Experiences = ({ content }) => {
     return (
@@ -368,7 +461,10 @@ const Experiences = ({ content }) => {
                  <div className="container mx-auto px-4">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <div>
-                            <img src="imagens/kitesurf.jpg" alt="Kitesurf" className="rounded-2xl shadow-xl w-full h-auto" />
+                            <ImageCarousel images={[
+                                "imagens/kitesurf.jpg",
+                                "imagens/kitesurf2.jpg"
+                            ]} />
                         </div>
                         <div>
                             <h3 className="font-serif text-3xl sm:text-4xl mb-4">{content.kitesurf.title}</h3>
