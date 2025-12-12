@@ -176,6 +176,12 @@ const content = {
       kitesurf: {
         title: 'Kitesurf',
         text: 'Tutóia é conhecida mundialmente por suas condições ideais de kitesurf, e a Pousada Delta Chalés é sua base perfeita! Se você ama kitesurf em Tutóia, vai se sentir em casa. Nossa localização estratégica oferece fácil acesso aos melhores spots de kitesurf da região, como Praia do Arpoador e outras praias com vento consistente.',
+        offerTitle: 'Oferecemos',
+        offers: [
+          'Translado aeroporto',
+          'Aulas de kitesurfing',
+          'Kitetrips (downwinders)'
+        ],
       },
     },
     tours: {
@@ -261,6 +267,12 @@ const content = {
       kitesurf: {
         title: 'Kitesurf',
         text: "Tutóia has the perfect wind conditions, and Delta Chalés is your ideal base. If you love kitesurfing, you'll feel right at home. Our strategic location gives you easy access to the best kitesurfing spots in the region.",
+        offerTitle: 'We offer',
+        offers: [
+          'Airport transfer',
+          'Kitesurf lessons',
+          'Kite trips (downwinders)'
+        ],
       },
     },
     tours: {
@@ -383,7 +395,7 @@ const AccommodationCard = ({ item, imageUrl }) => (
 const Accommodations = ({ content }) => {
     const images = [
         "imagens/Bungalow Mar.jpg",
-        "imagens/Bungalow Kite.jpg",
+        "imagens/Bungalow kite.jpg",
         "imagens/Bungalow do Vento.jpg",
         "imagens/Jardim Bungalow.jpg",
         "imagens/Bungalow Duna.jpg",
@@ -463,8 +475,18 @@ const Experiences = ({ content }) => {
                             ]} />
                         </div>
                         <div>
-                            <h3 className="font-serif text-3xl sm:text-4xl mb-4">{content.kitesurf.title}</h3>
-                            <p className="text-white/80 leading-relaxed mb-6">{content.kitesurf.text}</p>
+                          <h3 className="font-serif text-3xl sm:text-4xl mb-4">{content.kitesurf.title}</h3>
+                          <p className="text-white/80 leading-relaxed mb-6">{content.kitesurf.text}</p>
+                          {content.kitesurf.offerTitle && content.kitesurf.offers && (
+                            <>
+                              <h4 className="font-bold mb-3">{content.kitesurf.offerTitle}</h4>
+                              <ul className="text-white/80 space-y-2">
+                                {content.kitesurf.offers.map((offer, index) => (
+                                  <li key={index} className="flex items-start"><BulletIcon /> {offer}</li>
+                                ))}
+                              </ul>
+                            </>
+                          )}
                         </div>
                     </div>
                 </div>
