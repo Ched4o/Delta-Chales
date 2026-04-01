@@ -1,151 +1,540 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Em Manutenção 🌴</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pousada Delta Chalés – Em Breve</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+  :root {
+    --sand: #e8d5b0;
+    --sand-light: #f5ead6;
+    --ocean-deep: #0a4a6e;
+    --ocean-mid: #1a6e9a;
+    --ocean-light: #4db8d4;
+    --ocean-foam: #a8dde8;
+    --sky-top: #1a3a5c;
+    --sky-mid: #2e7fa8;
+    --sky-horizon: #f4c97a;
+    --sunset-orange: #e8834a;
+    --sunset-pink: #d4607a;
+    --palm-green: #2d5a27;
+    --palm-mid: #3d7a35;
+    --white: #fefdf8;
+  }
 
-    body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #fff;
-      overflow: hidden;
+  html, body {
+    width: 100%; height: 100%;
+    overflow-x: hidden;
+  }
 
-      /* Fundo praiano animado */
-      background: linear-gradient(-45deg, #00c6ff, #0072ff, #00ffcc, #f9d423);
-      background-size: 400% 400%;
-      animation: gradientOcean 12s ease infinite;
-    }
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--sky-top);
+    min-height: 100vh;
+    position: relative;
+  }
 
-    @keyframes gradientOcean {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+  /* ── SCENE ── */
+  .scene {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+  }
 
-    .container {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(12px);
-      padding: 40px;
-      border-radius: 20px;
-      max-width: 500px;
-      box-shadow: 0 0 40px rgba(0,0,0,0.2);
-      animation: fadeUp 1.5s ease;
-    }
+  /* Sky gradient */
+  .sky {
+    position: absolute;
+    inset: 0;
+    bottom: 38%;
+    background: linear-gradient(
+      to bottom,
+      #0d2a45 0%,
+      #1a4a70 20%,
+      #2e80b0 45%,
+      #5aadcc 65%,
+      #f9d98a 82%,
+      #f4b55a 90%,
+      #e8834a 100%
+    );
+  }
 
-    h1 {
-      font-size: 2.8em;
-      margin-bottom: 15px;
-    }
+  /* Sun / glow */
+  .sun {
+    position: absolute;
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff8e0 0%, #ffe090 40%, #ffb84a 70%, transparent 100%);
+    left: 50%; bottom: calc(38% - 10px);
+    transform: translateX(-50%);
+    box-shadow: 0 0 80px 40px rgba(255,200,80,0.35), 0 0 200px 100px rgba(255,160,40,0.15);
+    animation: sunpulse 6s ease-in-out infinite;
+  }
 
-    p {
-      font-size: 1.1em;
-      margin-bottom: 25px;
-    }
+  @keyframes sunpulse {
+    0%,100% { box-shadow: 0 0 80px 40px rgba(255,200,80,0.35), 0 0 200px 100px rgba(255,160,40,0.15); }
+    50% { box-shadow: 0 0 100px 55px rgba(255,200,80,0.45), 0 0 260px 130px rgba(255,160,40,0.2); }
+  }
 
-    /* Ondinhas animadas */
-    .wave {
-      position: absolute;
-      bottom: 0;
-      width: 200%;
-      height: 120px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 100%;
-      animation: waveMove 8s linear infinite;
-    }
+  /* Clouds */
+  .cloud {
+    position: absolute;
+    border-radius: 50px;
+    background: rgba(255,240,200,0.18);
+    filter: blur(8px);
+  }
+  .cloud-1 { width: 220px; height: 40px; top: 10%; left: 8%; animation: drift1 30s linear infinite; }
+  .cloud-2 { width: 160px; height: 30px; top: 18%; right: 15%; animation: drift2 40s linear infinite; }
+  .cloud-3 { width: 100px; height: 24px; top: 25%; left: 30%; animation: drift1 50s linear infinite reverse; }
 
-    .wave:nth-child(2) {
-      bottom: 10px;
-      opacity: 0.5;
-      animation-duration: 10s;
-    }
+  @keyframes drift1 { 0%{transform:translateX(0)} 100%{transform:translateX(60px)} }
+  @keyframes drift2 { 0%{transform:translateX(0)} 100%{transform:translateX(-50px)} }
 
-    @keyframes waveMove {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
+  /* Ocean */
+  .ocean {
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 22%; height: 18%;
+    overflow: hidden;
+  }
 
-    /* Loader estilo sol */
-    .sun {
-      width: 70px;
-      height: 70px;
-      background: radial-gradient(circle, #FFD700, #FFA500);
-      border-radius: 50%;
-      margin: 0 auto 20px;
-      animation: pulseSun 2s infinite;
-    }
+  .ocean-layer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      #f4c060 0%,
+      #e8973a 10%,
+      #c06020 18%,
+      #1a6e9a 30%,
+      #1260a0 55%,
+      #0d4a80 80%,
+      #0a3a65 100%
+    );
+  }
 
-    @keyframes pulseSun {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.15); }
-    }
+  /* Wave animation */
+  .wave-wrap {
+    position: absolute;
+    bottom: 0; left: -50%; width: 200%;
+  }
 
-    .btn {
-      display: inline-block;
-      padding: 12px 25px;
-      background: linear-gradient(45deg, #ff9966, #ff5e62);
-      border-radius: 30px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      transition: 0.3s;
-    }
+  .wave {
+    fill: none;
+    stroke: rgba(255,255,255,0.18);
+    stroke-width: 1.5;
+    animation: wavemove 5s ease-in-out infinite;
+  }
+  .wave2 {
+    stroke: rgba(255,255,255,0.1);
+    stroke-width: 1;
+    animation: wavemove 7s ease-in-out infinite reverse;
+  }
 
-    .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(255, 94, 98, 0.7);
-    }
+  @keyframes wavemove {
+    0%,100% { transform: translateX(0) }
+    50% { transform: translateX(-80px) }
+  }
 
-    .footer {
-      margin-top: 20px;
-      font-size: 0.9em;
-      opacity: 0.8;
-    }
+  /* Reflection on water */
+  .sun-reflection {
+    position: absolute;
+    left: 50%; bottom: 0;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255,200,80,0.6) 0%, rgba(255,160,40,0.1) 100%);
+    filter: blur(10px);
+    border-radius: 50%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
 
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+  @keyframes shimmer {
+    0%,100% { width: 60px; opacity: 0.8 }
+    50% { width: 90px; opacity: 1 }
+  }
 
-  </style>
+  /* Beach / sand */
+  .beach {
+    position: absolute;
+    left: 0; right: 0; bottom: 0; height: 24%;
+    background: linear-gradient(to bottom, #c8a060 0%, #d8b070 30%, #e8c880 60%, #d4b068 100%);
+    border-radius: 50% 50% 0 0 / 30px 30px 0 0;
+    overflow: hidden;
+  }
+
+  .beach::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 6px;
+    background: rgba(255,255,255,0.35);
+    border-radius: 50%;
+    filter: blur(3px);
+    animation: foamline 4s ease-in-out infinite;
+  }
+
+  @keyframes foamline {
+    0%,100% { transform: scaleX(1) translateY(0); opacity: 0.35 }
+    50% { transform: scaleX(1.02) translateY(-2px); opacity: 0.6 }
+  }
+
+  /* Sand texture dots */
+  .sand-dots {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle, rgba(180,140,60,0.3) 1px, transparent 1px),
+      radial-gradient(circle, rgba(255,230,160,0.2) 1px, transparent 1px);
+    background-size: 12px 12px, 8px 8px;
+    background-position: 0 0, 4px 4px;
+  }
+
+  /* Palm trees */
+  .palm-left, .palm-right {
+    position: absolute;
+    bottom: 19%;
+  }
+  .palm-left { left: 3%; }
+  .palm-right { right: 5%; transform: scaleX(-1); }
+
+  /* Seagulls */
+  .birds {
+    position: absolute;
+    top: 20%; left: 20%;
+    animation: birdfloat 8s ease-in-out infinite;
+  }
+
+  @keyframes birdfloat {
+    0%,100%{transform:translate(0,0)} 25%{transform:translate(20px,-8px)} 50%{transform:translate(40px,0)} 75%{transform:translate(20px,8px)}
+  }
+
+  /* ── CONTENT ── */
+  .content {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    pointer-events: none;
+  }
+
+  .glass-card {
+    background: rgba(10, 30, 50, 0.45);
+    backdrop-filter: blur(18px) saturate(1.4);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    border: 1px solid rgba(255,240,180,0.2);
+    border-radius: 20px;
+    padding: 56px 64px;
+    max-width: 640px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 8px 60px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.12);
+    pointer-events: all;
+    animation: fadeup 1.2s ease-out both;
+  }
+
+  @keyframes fadeup {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .tagline-top {
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,220,120,0.85);
+    margin-bottom: 20px;
+    animation: fadeup 1.2s 0.2s ease-out both;
+  }
+
+  .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(36px, 6vw, 56px);
+    color: #fefdf8;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    animation: fadeup 1.2s 0.3s ease-out both;
+  }
+  .brand em {
+    font-style: italic;
+    color: #f9d98a;
+  }
+
+  .divider {
+    width: 60px; height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255,220,120,0.7), transparent);
+    margin: 24px auto;
+    animation: fadeup 1.2s 0.45s ease-out both;
+  }
+
+  .main-message {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(22px, 4vw, 30px);
+    color: #fef9ee;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    animation: fadeup 1.2s 0.5s ease-out both;
+  }
+
+  .sub-message {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    color: rgba(255,240,200,0.7);
+    line-height: 1.7;
+    letter-spacing: 0.3px;
+    margin-bottom: 36px;
+    animation: fadeup 1.2s 0.65s ease-out both;
+  }
+
+  .contact-row {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeup 1.2s 0.8s ease-out both;
+  }
+
+  .contact-btn {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #f9d98a;
+    text-decoration: none;
+    padding: 11px 24px;
+    border: 1px solid rgba(249,217,138,0.45);
+    border-radius: 40px;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    pointer-events: all;
+  }
+
+  .contact-btn:hover {
+    background: rgba(249,217,138,0.15);
+    border-color: rgba(249,217,138,0.8);
+    color: #fff8e0;
+  }
+
+  .wave-icon { font-size: 16px; }
+
+  .footer-note {
+    position: fixed;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: rgba(255,235,170,0.5);
+    text-transform: uppercase;
+    white-space: nowrap;
+    animation: fadeup 1.5s 1.2s ease-out both;
+  }
+
+  /* Stars */
+  .stars {
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 40%;
+    pointer-events: none;
+  }
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle var(--d) ease-in-out infinite var(--del);
+    opacity: 0;
+  }
+  @keyframes twinkle {
+    0%,100%{opacity:0} 50%{opacity:var(--op)}
+  }
+
+  @media (max-width: 600px) {
+    .glass-card { padding: 36px 24px; }
+    .palm-right { display: none; }
+    .palm-left { left: -5%; }
+  }
+</style>
 </head>
-
 <body>
 
-  <div class="container">
-    <div class="sun"></div>
+<!-- SCENE -->
+<div class="scene">
+  <!-- Sky -->
+  <div class="sky"></div>
 
-    <h1>🌴 Estamos em manutenção</h1>
-    <p>Estamos preparando algo incrível, com aquele clima de praia que você gosta... 🌊☀️<br>
-    Volte em breve!</p>
+  <!-- Stars -->
+  <div class="stars" id="stars"></div>
 
-    <a href="#" class="btn">Atualizar</a>
+  <!-- Clouds -->
+  <div class="cloud cloud-1"></div>
+  <div class="cloud cloud-2"></div>
+  <div class="cloud cloud-3"></div>
 
-    <div class="footer">
-      Feito com vibe tropical 🏝️
+  <!-- Birds -->
+  <svg class="birds" width="70" height="30" viewBox="0 0 70 30" fill="none">
+    <path d="M0 15 Q5 8 10 15" stroke="rgba(255,240,200,0.6)" stroke-width="1.2" fill="none"/>
+    <path d="M14 10 Q19 3 24 10" stroke="rgba(255,240,200,0.5)" stroke-width="1.2" fill="none"/>
+    <path d="M30 18 Q34 12 38 18" stroke="rgba(255,240,200,0.4)" stroke-width="1" fill="none"/>
+    <path d="M50 8 Q55 2 60 8" stroke="rgba(255,240,200,0.35)" stroke-width="1" fill="none"/>
+  </svg>
+
+  <!-- Sun -->
+  <div class="sun"></div>
+
+  <!-- Ocean -->
+  <div class="ocean">
+    <div class="ocean-layer"></div>
+    <div class="sun-reflection"></div>
+    <div class="wave-wrap">
+      <svg width="100%" height="60" viewBox="0 0 800 60" preserveAspectRatio="none">
+        <path class="wave" d="M0 30 Q100 10 200 30 Q300 50 400 30 Q500 10 600 30 Q700 50 800 30"/>
+        <path class="wave2" d="M0 40 Q100 20 200 40 Q300 55 400 40 Q500 20 600 40 Q700 55 800 40"/>
+        <path class="wave" style="opacity:0.6" d="M0 20 Q80 5 160 20 Q240 38 320 20 Q400 5 480 20 Q560 38 640 20 Q720 5 800 20" />
+      </svg>
     </div>
   </div>
 
-  <!-- Ondas -->
-  <div class="wave"></div>
-  <div class="wave"></div>
+  <!-- Beach -->
+  <div class="beach">
+    <div class="sand-dots"></div>
+  </div>
 
+  <!-- Palm Left -->
+  <svg class="palm-left" width="200" height="380" viewBox="0 0 200 380" style="overflow:visible">
+    <!-- trunk: curved left-leaning, segmented look -->
+    <path d="M100 380 C98 340 95 300 92 260 C89 220 86 180 82 145 C79 115 74 85 68 58" stroke="#7a4a18" stroke-width="13" fill="none" stroke-linecap="round"/>
+    <path d="M100 380 C98 340 95 300 92 260 C89 220 86 180 82 145 C79 115 74 85 68 58" stroke="#5a3210" stroke-width="9" fill="none" stroke-linecap="round" stroke-dasharray="18 10" opacity="0.45"/>
+    <!-- frond 1: sweeps far left-down -->
+    <path d="M68 58 C50 52 20 48 -18 72" stroke="#1a5c14" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M68 58 C52 55 30 54 10 64 C-2 70 -12 72 -18 72" fill="#2a7a1e" opacity="0.9" stroke="none"/>
+    <path d="M68 58 C50 62 26 65 2 74 C-8 78 -16 76 -18 72" fill="#1e6418" opacity="0.7" stroke="none"/>
+    <!-- frond 2: sweeps far right-up -->
+    <path d="M68 58 C88 44 118 28 155 20" stroke="#1a5c14" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M68 58 C86 48 110 36 138 26 C148 22 155 20 155 20" fill="#2a7a1e" opacity="0.9" stroke="none"/>
+    <path d="M68 58 C84 54 106 46 132 38 C144 34 153 22 155 20" fill="#1e6418" opacity="0.7" stroke="none"/>
+    <!-- frond 3: goes left-up -->
+    <path d="M68 58 C55 38 36 16 8 -4" stroke="#1a5c14" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M68 58 C57 42 44 24 26 8 C18 0 10 -2 8 -4" fill="#32883e" opacity="0.85" stroke="none"/>
+    <path d="M68 58 C59 46 48 32 32 18 C22 8 12 -2 8 -4" fill="#26702e" opacity="0.65" stroke="none"/>
+    <!-- frond 4: goes right -->
+    <path d="M68 58 C90 52 120 48 158 55" stroke="#1a5c14" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M68 58 C88 56 112 54 140 56 C150 57 157 56 158 55" fill="#2a7a1e" opacity="0.85" stroke="none"/>
+    <path d="M68 58 C86 62 110 62 138 62 C150 62 157 58 158 55" fill="#1e6418" opacity="0.6" stroke="none"/>
+    <!-- frond 5: droops left -->
+    <path d="M68 58 C58 68 42 82 14 98" stroke="#22701a" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M68 58 C60 70 48 82 28 94 C20 98 15 100 14 98" fill="#2a7a1e" opacity="0.75" stroke="none"/>
+    <path d="M68 58 C62 72 52 86 34 98 C24 104 16 102 14 98" fill="#1c5c16" opacity="0.55" stroke="none"/>
+    <!-- frond 6: droops right -->
+    <path d="M68 58 C82 66 100 80 118 102" stroke="#22701a" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M68 58 C80 68 96 82 112 100 C116 104 118 104 118 102" fill="#2a7a1e" opacity="0.75" stroke="none"/>
+    <path d="M68 58 C78 70 92 86 106 104 C112 110 118 106 118 102" fill="#1c5c16" opacity="0.55" stroke="none"/>
+    <!-- coconuts cluster -->
+    <circle cx="72" cy="68" r="7" fill="#7a4a10"/>
+    <circle cx="63" cy="64" r="6.5" fill="#8a5618"/>
+    <circle cx="78" cy="62" r="6" fill="#6a3c0c"/>
+  </svg>
+
+  <!-- Palm Right (leans right, different shape) -->
+  <svg class="palm-right" width="200" height="360" viewBox="0 0 200 360" style="overflow:visible">
+    <!-- trunk -->
+    <path d="M90 360 C92 322 96 285 100 248 C104 210 108 172 114 138 C119 108 126 80 134 54" stroke="#7a4a18" stroke-width="13" fill="none" stroke-linecap="round"/>
+    <path d="M90 360 C92 322 96 285 100 248 C104 210 108 172 114 138 C119 108 126 80 134 54" stroke="#5a3210" stroke-width="9" fill="none" stroke-linecap="round" stroke-dasharray="18 10" opacity="0.45"/>
+    <!-- frond 1: far left -->
+    <path d="M134 54 C112 46 82 38 44 44" stroke="#1a5c14" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M134 54 C116 50 92 46 66 48 C56 49 48 46 44 44" fill="#2a7a1e" opacity="0.9" stroke="none"/>
+    <path d="M134 54 C118 58 96 58 70 58 C58 58 48 50 44 44" fill="#1e6418" opacity="0.65" stroke="none"/>
+    <!-- frond 2: far right-up -->
+    <path d="M134 54 C158 42 188 22 218 10" stroke="#1a5c14" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M134 54 C156 46 180 30 206 16 C212 12 217 10 218 10" fill="#32883e" opacity="0.9" stroke="none"/>
+    <path d="M134 54 C154 52 176 38 202 24 C210 18 216 12 218 10" fill="#26702e" opacity="0.65" stroke="none"/>
+    <!-- frond 3: up-left -->
+    <path d="M134 54 C124 34 110 12 90 -8" stroke="#1a5c14" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M134 54 C126 38 116 18 100 0 C96 -4 91 -7 90 -8" fill="#2a7a1e" opacity="0.88" stroke="none"/>
+    <path d="M134 54 C128 42 120 24 106 6 C100 -2 92 -6 90 -8" fill="#1e6418" opacity="0.65" stroke="none"/>
+    <!-- frond 4: up-right -->
+    <path d="M134 54 C150 40 172 24 200 18" stroke="#1a5c14" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M134 54 C148 44 168 30 196 22 C199 21 200 19 200 18" fill="#2a7a1e" opacity="0.85" stroke="none"/>
+    <path d="M134 54 C146 48 164 38 190 30 C198 26 200 20 200 18" fill="#1c5c16" opacity="0.6" stroke="none"/>
+    <!-- frond 5: droops left -->
+    <path d="M134 54 C120 64 102 80 78 100" stroke="#22701a" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M134 54 C122 66 108 80 88 96 C84 100 80 102 78 100" fill="#2a7a1e" opacity="0.75" stroke="none"/>
+    <path d="M134 54 C124 68 112 84 92 100 C86 106 80 104 78 100" fill="#1c5c16" opacity="0.55" stroke="none"/>
+    <!-- frond 6: droops right -->
+    <path d="M134 54 C148 62 162 76 172 100" stroke="#22701a" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M134 54 C146 64 160 78 168 98 C170 102 172 103 172 100" fill="#2a7a1e" opacity="0.75" stroke="none"/>
+    <path d="M134 54 C144 66 156 82 164 102 C168 110 172 106 172 100" fill="#1c5c16" opacity="0.55" stroke="none"/>
+    <!-- coconuts -->
+    <circle cx="130" cy="65" r="7" fill="#7a4a10"/>
+    <circle cx="140" cy="62" r="6.5" fill="#8a5618"/>
+    <circle cx="124" cy="60" r="6" fill="#6a3c0c"/>
+  </svg>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+  <div class="glass-card">
+    <p class="tagline-top">✦ Pousada Delta Chalés ✦</p>
+    <h1 class="brand">Paraíso em<br><em>Construção</em></h1>
+    <div class="divider"></div>
+    <p class="main-message">Estamos preparando algo<br>ainda mais especial para você</p>
+    <p class="sub-message">
+      Nosso site está passando por melhorias para oferecer<br>
+      a melhor experiência antes da sua chegada ao paraíso.<br>
+      Em breve estaremos de volta com novidades.
+    </p>
+    <div class="contact-row">
+      <a class="contact-btn" href="https://wa.me/5586995834198" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.112 1.523 5.847L0 24l6.335-1.508A11.93 11.93 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.805 9.805 0 01-5.027-1.384l-.36-.214-3.732.889.934-3.618-.235-.372A9.799 9.799 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182c5.42 0 9.818 4.396 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+        WhatsApp
+      </a>
+      <a class="contact-btn" href="mailto:Pousadadeltachales@gmail.com">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+        E-mail
+      </a>
+      <a class="contact-btn" href="https://www.instagram.com/pousada_delta.chales/" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+        Instagram
+      </a>
+    </div>
+  </div>
+</div>
+
+<p class="footer-note">Voltamos em breve — o paraíso espera por você</p>
+
+<script>
+  // Generate stars
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 55; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2 + 1;
+    const dur = (Math.random() * 3 + 2) + 's';
+    const del = -(Math.random() * 5) + 's';
+    const op = Math.random() * 0.5 + 0.2;
+    s.style.cssText = `
+      width:${size}px; height:${size}px;
+      top:${Math.random()*90}%;
+      left:${Math.random()*100}%;
+      --d:${dur}; --del:${del}; --op:${op};
+    `;
+    starsEl.appendChild(s);
+  }
+</script>
 </body>
 </html>
