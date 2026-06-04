@@ -1,540 +1,923 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pousada Delta Chalés – Em Breve</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
+<title>Delta Chalés — Pousada em Tutóia, MA | Kitesurf · Delta do Parnaíba</title>
+<meta name="description" content="Pousada Delta Chalés em Tutóia, MA. Bungalows à beira-mar, kitesurf, passeios no Delta do Parnaíba. Rota das Emoções.">
+<meta property="og:title" content="Delta Chalés — Pousada em Tutóia, MA">
+<meta property="og:description" content="Bungalows à beira-mar, kitesurf, Delta do Parnaíba. Rota das Emoções — Tutóia, MA.">
+<meta property="og:image" content="https://www.deltachales.com.br/imagens/hero-sunset.jpg">
+<meta property="og:url" content="https://www.deltachales.com.br">
+<link rel="canonical" href="https://www.deltachales.com.br">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LodgingBusiness","name":"Pousada Delta Chalés","address":{"@type":"PostalAddress","addressLocality":"Tutóia","addressRegion":"MA","addressCountry":"BR"},"telephone":"+5586995834198","email":"pousadadeltachales@gmail.com","url":"https://www.deltachales.com.br"}
+</script>
+
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+/* ══════════════════════════════════════════
+   RESET & ROOT
+══════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:      #0C1A1A;
+  --bg2:     #111F1F;
+  --bg3:     #162525;
+  --gold:    #C8932A;
+  --gold2:   #E8C464;
+  --cream:   #EDE3C8;
+  --fog:     rgba(237,227,200,.62);
+  --rust:    #B25C44;
+  --white:   #F8F4EC;
+  --di:      'Italiana',Georgia,serif;
+  --sa:      'Jost',system-ui,sans-serif;
+  --ease:    cubic-bezier(.22,.68,0,1.2);
+  --ease2:   cubic-bezier(.25,.46,.45,.94);
+  --ease3:   cubic-bezier(.16,1,.3,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sa);background:var(--bg);color:var(--cream);overflow-x:hidden;cursor:none}
+img{max-width:100%;height:auto}
 
-  :root {
-    --sand: #e8d5b0;
-    --sand-light: #f5ead6;
-    --ocean-deep: #0a4a6e;
-    --ocean-mid: #1a6e9a;
-    --ocean-light: #4db8d4;
-    --ocean-foam: #a8dde8;
-    --sky-top: #1a3a5c;
-    --sky-mid: #2e7fa8;
-    --sky-horizon: #f4c97a;
-    --sunset-orange: #e8834a;
-    --sunset-pink: #d4607a;
-    --palm-green: #2d5a27;
-    --palm-mid: #3d7a35;
-    --white: #fefdf8;
-  }
+/* ══════════════════════════════════════════
+   CURSOR
+══════════════════════════════════════════ */
+#dot,#ring{position:fixed;border-radius:50%;pointer-events:none;z-index:9000;transform:translate(-50%,-50%)}
+#dot{width:8px;height:8px;background:var(--gold);transition:width .3s,height .3s,background .3s}
+#ring{width:32px;height:32px;border:1.5px solid var(--gold);opacity:.5;transition:transform .38s var(--ease2);z-index:8999}
+#dot.big{width:40px;height:40px;background:var(--rust)}
 
-  html, body {
-    width: 100%; height: 100%;
-    overflow-x: hidden;
-  }
+/* ══════════════════════════════════════════
+   PROGRESS
+══════════════════════════════════════════ */
+#prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));z-index:8000;width:0;transition:width .08s linear}
 
-  body {
-    font-family: 'Jost', sans-serif;
-    background: var(--sky-top);
-    min-height: 100vh;
-    position: relative;
-  }
+/* ══════════════════════════════════════════
+   GRAIN
+══════════════════════════════════════════ */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.06'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:7900;opacity:.32;
+}
 
-  /* ── SCENE ── */
-  .scene {
-    position: fixed;
-    inset: 0;
-    overflow: hidden;
-  }
+/* ══════════════════════════════════════════
+   NAV
+══════════════════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:700;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:2rem 4rem;
+  transition:background .5s,padding .4s,backdrop-filter .5s;
+}
+nav.inked{background:rgba(12,26,26,.9);backdrop-filter:blur(24px);padding:1.1rem 4rem}
+.nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:var(--cream)}
+.nav-logo img{width:36px;height:36px;object-fit:contain}
+.nav-logo-name{font-family:var(--di);font-size:1.5rem;letter-spacing:.03em}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{
+  color:rgba(237,227,200,.65);text-decoration:none;
+  font-size:.72rem;font-weight:400;letter-spacing:.15em;text-transform:uppercase;
+  transition:color .3s;position:relative;
+}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .35s var(--ease2)}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a:hover::after{width:100%}
+.nav-r{display:flex;align-items:center;gap:.75rem}
+.l-btn{background:none;border:1px solid rgba(237,227,200,.25);border-radius:2rem;padding:.28rem .9rem;color:rgba(237,227,200,.65);font-family:var(--sa);font-size:.68rem;letter-spacing:.12em;cursor:pointer;transition:all .3s}
+.l-btn.on,.l-btn:hover{background:var(--gold);border-color:var(--gold);color:#0C1A1A}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.burger span{display:block;width:22px;height:1.5px;background:var(--cream);transition:all .3s}
 
-  /* Sky gradient */
-  .sky {
-    position: absolute;
-    inset: 0;
-    bottom: 38%;
-    background: linear-gradient(
-      to bottom,
-      #0d2a45 0%,
-      #1a4a70 20%,
-      #2e80b0 45%,
-      #5aadcc 65%,
-      #f9d98a 82%,
-      #f4b55a 90%,
-      #e8834a 100%
-    );
-  }
+/* ══════════════════════════════════════════
+   MOBILE MENU
+══════════════════════════════════════════ */
+.mob{position:fixed;inset:0;background:var(--bg2);z-index:800;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;transform:translateX(110%);transition:transform .55s var(--ease3)}
+.mob.open{transform:translateX(0)}
+.mob a{font-family:var(--di);font-size:2.5rem;color:var(--cream);text-decoration:none;transition:color .3s}
+.mob a:hover{color:var(--gold)}
+.mob-x{position:absolute;top:2rem;right:2.5rem;background:none;border:none;color:var(--cream);font-size:2.5rem;cursor:pointer;line-height:1}
 
-  /* Sun / glow */
-  .sun {
-    position: absolute;
-    width: 90px; height: 90px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #fff8e0 0%, #ffe090 40%, #ffb84a 70%, transparent 100%);
-    left: 50%; bottom: calc(38% - 10px);
-    transform: translateX(-50%);
-    box-shadow: 0 0 80px 40px rgba(255,200,80,0.35), 0 0 200px 100px rgba(255,160,40,0.15);
-    animation: sunpulse 6s ease-in-out infinite;
-  }
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+#hero{height:100vh;min-height:640px;position:relative;display:flex;align-items:flex-end;overflow:hidden}
+.h-bg{position:absolute;inset:0;background:url('imagens/hero-sunset.jpg') center/cover no-repeat;animation:kb 22s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.07)}}
+.h-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(12,26,26,.95) 0%,rgba(12,26,26,.35) 45%,rgba(12,26,26,.55) 100%)}
+.h-body{position:relative;z-index:2;padding:0 4rem 5rem;width:100%}
+.h-label{font-size:.7rem;font-weight:400;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;opacity:0;animation:slideUp .9s var(--ease3) .3s forwards;line-height:1.5}
+.h-title{font-family:var(--di);font-size:clamp(3.5rem,10vw,9.5rem);line-height:.95;color:var(--white);opacity:0;animation:slideUp 1.1s var(--ease3) .5s forwards;overflow:hidden}
+.h-title em{font-style:italic;color:var(--gold2)}
+.h-sub{margin-top:1.5rem;font-size:.85rem;font-weight:300;letter-spacing:.18em;text-transform:uppercase;color:rgba(237,227,200,.65);opacity:0;animation:slideUp .9s var(--ease3) .8s forwards}
+.h-actions{display:flex;align-items:center;gap:1.5rem;margin-top:2.5rem;opacity:0;animation:slideUp .9s var(--ease3) 1s forwards; flex-wrap: wrap;}
+.btn-gold{display:inline-flex;justify-content:center;align-items:center;gap:.6rem;background:var(--gold);color:#0C1A1A;padding:.9rem 2.2rem;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .35s var(--ease2);cursor:pointer}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 12px 32px rgba(200,147,42,.38)}
+.btn-outline{display:inline-flex;justify-content:center;align-items:center;gap:.5rem;border:1px solid rgba(237,227,200,.35);color:var(--cream);padding:.88rem 2.2rem;font-size:.75rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .35s;cursor:pointer}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.h-scroll{position:absolute;right:4rem;bottom:3rem;z-index:3;display:flex;flex-direction:column;align-items:center;gap:.6rem;color:rgba(237,227,200,.45);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;opacity:0;animation:slideUp .9s var(--ease3) 1.4s forwards}
+.h-line{width:1px;height:52px;background:linear-gradient(to bottom,rgba(200,147,42,.7),transparent);animation:scrl 1.8s ease-in-out infinite}
+@keyframes scrl{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}50.01%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes slideUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
 
-  @keyframes sunpulse {
-    0%,100% { box-shadow: 0 0 80px 40px rgba(255,200,80,0.35), 0 0 200px 100px rgba(255,160,40,0.15); }
-    50% { box-shadow: 0 0 100px 55px rgba(255,200,80,0.45), 0 0 260px 130px rgba(255,160,40,0.2); }
-  }
+/* ══════════════════════════════════════════
+   MARQUEE
+══════════════════════════════════════════ */
+.marquee-wrap{background:var(--gold);padding:.85rem 0;overflow:hidden;position:relative;z-index:2}
+.marquee-track{display:flex;gap:0;white-space:nowrap;animation:marquee 22s linear infinite}
+.marquee-wrap:hover .marquee-track{animation-play-state:paused}
+.marquee-item{font-family:var(--di);font-size:1.1rem;color:#0C1A1A;padding:0 2rem;flex-shrink:0}
+.marquee-dot{color:rgba(12,26,26,.45);padding:0 .5rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-  /* Clouds */
-  .cloud {
-    position: absolute;
-    border-radius: 50px;
-    background: rgba(255,240,200,0.18);
-    filter: blur(8px);
-  }
-  .cloud-1 { width: 220px; height: 40px; top: 10%; left: 8%; animation: drift1 30s linear infinite; }
-  .cloud-2 { width: 160px; height: 30px; top: 18%; right: 15%; animation: drift2 40s linear infinite; }
-  .cloud-3 { width: 100px; height: 24px; top: 25%; left: 30%; animation: drift1 50s linear infinite reverse; }
+/* ══════════════════════════════════════════
+   ABOUT
+══════════════════════════════════════════ */
+#sobre{background:var(--bg2);padding:8rem 0}
+.sobre-g{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:680px}
+.sobre-img{position:relative;overflow:hidden}
+.sobre-img img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.85) saturate(.9);transition:transform 10s var(--ease2)}
+.sobre-img:hover img{transform:scale(1.05)}
+.sobre-img-badge{position:absolute;bottom:0;left:0;right:0;padding:2.5rem;background:linear-gradient(to top,rgba(12,26,26,.92),transparent);color:var(--cream)}
+.sobre-txt{padding:5rem 5rem;display:flex;flex-direction:column;justify-content:center}
+.sec-label{font-size:.68rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:block}
+.sec-h{font-family:var(--di);font-size:clamp(2.5rem,4.5vw,4.2rem);line-height:1.08;color:var(--white)}
+.sec-h em{font-style:italic;color:var(--gold2)}
+.sobre-body{font-size:.97rem;font-weight:300;line-height:1.88;color:rgba(237,227,200,.72);margin-top:1.75rem;max-width:460px}
+.stats-row{display:flex;gap:3rem;margin-top:3rem;padding-top:2.5rem;border-top:1px solid rgba(237,227,200,.12); flex-wrap:wrap;}
+.stat{display:flex;flex-direction:column;gap:.35rem}
+.stat-n{font-family:var(--di);font-size:2.6rem;color:var(--gold);line-height:1}
+.stat-l{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(237,227,200,.5)}
 
-  @keyframes drift1 { 0%{transform:translateX(0)} 100%{transform:translateX(60px)} }
-  @keyframes drift2 { 0%{transform:translateX(0)} 100%{transform:translateX(-50px)} }
+/* ══════════════════════════════════════════
+   ACCOMMODATIONS (ACCORDION)
+══════════════════════════════════════════ */
+#acomods{background:var(--bg);padding:8rem 0}
+.ac-head{max-width:1280px;margin:0 auto;padding:0 4rem;margin-bottom:4rem}
+.ac-list{max-width:1280px;margin:0 auto;padding:0 4rem}
+.ac-item{border-top:1px solid rgba(237,227,200,.1);overflow:hidden}
+.ac-item:last-child{border-bottom:1px solid rgba(237,227,200,.1)}
+.ac-trigger{width:100%;background:none;border:none;color:var(--cream);cursor:pointer;text-align:left;padding:2rem 0;display:flex;align-items:center;gap:2rem;transition:color .3s}
+.ac-trigger:hover{color:var(--gold)}
+.ac-num{font-size:.65rem;letter-spacing:.3em;color:var(--gold);min-width:48px;font-family:var(--sa)}
+.ac-name{font-family:var(--di);font-size:clamp(1.5rem,3vw,2.6rem);flex:1;font-weight:400;line-height:1.2}
+.ac-icon{width:40px;height:40px;border:1px solid rgba(237,227,200,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .4s;font-size:1rem;color:rgba(237,227,200,.5)}
+.ac-trigger:hover .ac-icon{border-color:var(--gold);color:var(--gold)}
+.ac-item.open .ac-icon{background:var(--gold);border-color:var(--gold);color:#0C1A1A;transform:rotate(45deg)}
+.ac-body{max-height:0;overflow:hidden;transition:max-height .65s var(--ease3)}
+.ac-item.open .ac-body{max-height:600px}
+.ac-inner{display:grid;grid-template-columns:1fr 1fr;gap:3rem;padding-bottom:3rem;padding-left:calc(48px + 2rem)}
+.ac-inner img{width:100%;height:280px;object-fit:cover;display:block}
+.ac-desc{display:flex;flex-direction:column;justify-content:center;gap:1rem}
+.ac-desc p{font-size:.92rem;font-weight:300;line-height:1.82;color:rgba(237,227,200,.68)}
+.ac-feats{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
+.feat-tag{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(200,147,42,.4);color:var(--gold);padding:.28rem .75rem; white-space:nowrap;}
 
-  /* Ocean */
-  .ocean {
-    position: absolute;
-    left: 0; right: 0;
-    bottom: 22%; height: 18%;
-    overflow: hidden;
-  }
+/* ══════════════════════════════════════════
+   EXPERIENCES
+══════════════════════════════════════════ */
+#exp{background:var(--bg3)}
+.exp-block{display:grid;grid-template-columns:1fr 1fr;min-height:600px}
+.exp-photo{position:relative;overflow:hidden}
+.exp-photo img{width:100%;height:100%;min-height:500px;object-fit:cover;display:block;transition:transform 8s var(--ease2)}
+.exp-block:hover .exp-photo img{transform:scale(1.06)}
+.exp-txt{padding:5.5rem 5rem;display:flex;flex-direction:column;justify-content:center;background:var(--bg2)}
+.exp-txt.dark{background:var(--bg)}
+.exp-txt .sec-label{color:var(--gold)}
+.exp-h{font-family:var(--di);font-size:clamp(2.4rem,4vw,3.6rem);color:var(--white);line-height:1.1;margin-top:.5rem}
+.exp-body{font-size:.92rem;font-weight:300;line-height:1.88;color:rgba(237,227,200,.68);margin-top:1.5rem;max-width:400px}
+.exp-offers{list-style:none;margin-top:2rem;display:flex;flex-direction:column;gap:.9rem}
+.exp-offers li{display:flex;align-items:center;gap:.8rem;font-size:.88rem;color:rgba(237,227,200,.85)}
+.exp-offers li::before{content:'';width:24px;height:1px;background:var(--gold);flex-shrink:0}
+.kite-car{position:relative;overflow:hidden;width:100%;height:100%;min-height:500px}
+.kite-car img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.8s ease}
+.kite-car img.on{opacity:1}
 
-  .ocean-layer {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to bottom,
-      #f4c060 0%,
-      #e8973a 10%,
-      #c06020 18%,
-      #1a6e9a 30%,
-      #1260a0 55%,
-      #0d4a80 80%,
-      #0a3a65 100%
-    );
-  }
+/* ══════════════════════════════════════════
+   TOURS
+══════════════════════════════════════════ */
+#passeios{background:var(--bg2);padding:8rem 0}
+.tours-head{max-width:1280px;margin:0 auto;padding:0 4rem;display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:4rem;gap:3rem}
+.tours-head-r{max-width:380px;font-size:.92rem;font-weight:300;line-height:1.8;color:rgba(237,227,200,.6);flex-shrink:0}
+.tours-g{max-width:1280px;margin:0 auto;padding:0 4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.t-card{position:relative;overflow:hidden;cursor:pointer}
+.t-card img{width:100%;height:480px;object-fit:cover;display:block;transition:transform .85s var(--ease2),filter .85s;filter:brightness(.65) saturate(.85)}
+.t-card:hover img{transform:scale(1.07);filter:brightness(.45) saturate(1)}
+.t-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(12,26,26,.95) 0%,rgba(12,26,26,.05) 55%);display:flex;flex-direction:column;justify-content:flex-end;padding:2.5rem;transition:background .4s}
+.t-num{font-size:.6rem;letter-spacing:.35em;color:var(--gold);margin-bottom:.6rem}
+.t-title{font-family:var(--di);font-size:1.9rem;color:var(--white);margin-bottom:.75rem;line-height:1.15}
+.t-desc{font-size:.84rem;font-weight:300;line-height:1.65;color:rgba(237,227,200,.72);max-height:0;overflow:hidden;transition:max-height .6s var(--ease3),opacity .6s;opacity:0}
+.t-card:hover .t-desc{max-height:120px;opacity:1}
+.t-tag{display:inline-block;margin-top:1rem;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--gold);padding-bottom:2px;max-height:0;overflow:hidden;opacity:0;transition:max-height .4s .2s,opacity .4s .2s}
+.t-card:hover .t-tag{max-height:40px;opacity:1}
 
-  /* Wave animation */
-  .wave-wrap {
-    position: absolute;
-    bottom: 0; left: -50%; width: 200%;
-  }
+/* ══════════════════════════════════════════
+   GALLERY
+══════════════════════════════════════════ */
+#galeria{background:var(--bg);padding:8rem 0}
+.gal-head{max-width:1280px;margin:0 auto;padding:0 4rem;margin-bottom:3.5rem}
+.gal-strip{display:flex;gap:3px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;cursor:grab}
+.gal-strip::-webkit-scrollbar{display:none}
+.gal-strip.grab{cursor:grabbing}
+.gal-frame{flex:0 0 auto;position:relative;overflow:hidden}
+.gal-frame:nth-child(1){width:38vw;height:420px}
+.gal-frame:nth-child(2){width:22vw;height:420px}
+.gal-frame:nth-child(3){width:28vw;height:420px}
+.gal-frame:nth-child(4){width:24vw;height:420px}
+.gal-frame:nth-child(5){width:32vw;height:420px}
+.gal-frame:nth-child(6){width:20vw;height:420px}
+.gal-frame img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.8) saturate(.88);transition:transform .8s var(--ease2),filter .8s}
+.gal-frame:hover img{transform:scale(1.06);filter:brightness(.55) saturate(1.1)}
+.gal-cap{position:absolute;inset:0;display:flex;align-items:flex-end;padding:1.5rem;opacity:0;transition:opacity .4s}
+.gal-frame:hover .gal-cap{opacity:1}
+.gal-cap span{font-family:var(--di);font-size:1.1rem;color:var(--white);font-style:italic}
+.gal-hint{max-width:1280px;margin:.75rem auto 0;padding:0 4rem;display:flex;align-items:center;gap:1rem;color:rgba(237,227,200,.3);font-size:.65rem;letter-spacing:.2em}
+.gal-hint-line{width:36px;height:1px;background:rgba(200,147,42,.3);position:relative;overflow:hidden}
+.gal-hint-line::after{content:'absolute';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--gold);animation:slide 2s ease-in-out infinite}
+@keyframes slide{to{left:100%}}
 
-  .wave {
-    fill: none;
-    stroke: rgba(255,255,255,0.18);
-    stroke-width: 1.5;
-    animation: wavemove 5s ease-in-out infinite;
-  }
-  .wave2 {
-    stroke: rgba(255,255,255,0.1);
-    stroke-width: 1;
-    animation: wavemove 7s ease-in-out infinite reverse;
-  }
+/* ══════════════════════════════════════════
+   CONTACT
+══════════════════════════════════════════ */
+#contato{background:var(--bg3);padding:9rem 0;position:relative;overflow:hidden}
+.ct-ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--di);font-size:22vw;color:rgba(200,147,42,.04);white-space:nowrap;pointer-events:none;user-select:none;line-height:1}
+.ct-inner{max-width:1280px;margin:0 auto;padding:0 4rem;position:relative;z-index:2}
+.ct-top{display:flex;align-items:flex-end;justify-content:space-between;gap:3rem;margin-bottom:5rem; flex-wrap:wrap;}
+.ct-ask{font-family:var(--di);font-size:clamp(3rem,7vw,6.5rem);color:var(--white);line-height:1.05}
+.ct-ask em{font-style:italic;color:var(--gold2)}
 
-  @keyframes wavemove {
-    0%,100% { transform: translateX(0) }
-    50% { transform: translateX(-80px) }
-  }
+/* Ações Contato (WhatsApp + Booking) */
+.ct-actions { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; align-self: flex-end;}
+.ct-btn{display:inline-flex;justify-content:center;align-items:center;gap:.75rem;color:#fff;padding:1rem 2.4rem;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:all .3s var(--ease2);cursor:pointer;flex-shrink:0}
+.ct-wa{background:#25D366;}
+.ct-wa:hover{background:#1ebe5d;transform:translateY(-2px);box-shadow:0 10px 30px rgba(37,211,102,.35)}
+.ct-wa svg{width:18px;height:18px;fill:#fff}
+.ct-bk{background:#003580;}
+.ct-bk:hover{background:#00224f;transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,53,128,.35)}
+.ct-bk svg{width:18px;height:18px;fill:#fff}
 
-  /* Reflection on water */
-  .sun-reflection {
-    position: absolute;
-    left: 50%; bottom: 0;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(255,200,80,0.6) 0%, rgba(255,160,40,0.1) 100%);
-    filter: blur(10px);
-    border-radius: 50%;
-    animation: shimmer 3s ease-in-out infinite;
-  }
+.ct-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border:1px solid rgba(237,227,200,.08)}
+.ct-card{background:rgba(237,227,200,.03);padding:2.5rem;border-right:1px solid rgba(237,227,200,.08);transition:background .3s}
+.ct-card:last-child{border-right:none}
+.ct-card:hover{background:rgba(237,227,200,.06)}
+.ct-lbl{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.ct-val{font-family:var(--di);font-size:1.3rem;color:var(--white);line-height:1.45}
+.ct-val a{color:var(--white);text-decoration:none;transition:color .3s}
+.ct-val a:hover{color:var(--gold)}
 
-  @keyframes shimmer {
-    0%,100% { width: 60px; opacity: 0.8 }
-    50% { width: 90px; opacity: 1 }
-  }
+/* ══════════════════════════════════════════
+   MAP
+══════════════════════════════════════════ */
+#mapa{height:440px}
+#mapa iframe{width:100%;height:100%;border:none;filter:grayscale(40%) invert(8%) sepia(15%) contrast(1.05)}
 
-  /* Beach / sand */
-  .beach {
-    position: absolute;
-    left: 0; right: 0; bottom: 0; height: 24%;
-    background: linear-gradient(to bottom, #c8a060 0%, #d8b070 30%, #e8c880 60%, #d4b068 100%);
-    border-radius: 50% 50% 0 0 / 30px 30px 0 0;
-    overflow: hidden;
-  }
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+footer{background:#080F0F;padding:5rem 0 2.5rem}
+.ft-inner{max-width:1280px;margin:0 auto;padding:0 4rem}
+.ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid rgba(237,227,200,.06);margin-bottom:2.5rem}
+.ft-brand-logo{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem}
+.ft-brand-logo img{width:44px;height:44px;object-fit:contain}
+.ft-brand-name{font-family:var(--di);font-size:1.5rem;color:var(--white)}
+.ft-brand-sub{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(237,227,200,.28)}
+.ft-brand-desc{margin-top:1.25rem;font-size:.84rem;font-weight:300;line-height:1.78;color:rgba(237,227,200,.4);max-width:260px}
+.ft-col h4{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(237,227,200,.28);margin-bottom:1.5rem}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.ft-col ul a{color:rgba(237,227,200,.5);text-decoration:none;font-size:.87rem;font-weight:300;transition:color .3s}
+.ft-col ul a:hover{color:var(--gold)}
+.ft-bot{display:flex;align-items:center;justify-content:space-between}
+.ft-copy{font-size:.73rem;color:rgba(237,227,200,.2)}
+.socials{display:flex;gap:.65rem}
+.socials a{width:32px;height:32px;border:1px solid rgba(237,227,200,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(237,227,200,.4);text-decoration:none;transition:all .3s;cursor:pointer}
+.socials a:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
 
-  .beach::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; height: 6px;
-    background: rgba(255,255,255,0.35);
-    border-radius: 50%;
-    filter: blur(3px);
-    animation: foamline 4s ease-in-out infinite;
-  }
+/* ══════════════════════════════════════════
+   WHATSAPP FAB
+══════════════════════════════════════════ */
+.wa-fab{position:fixed;bottom:2rem;right:2rem;width:54px;height:54px;background:#25D366;border-radius:50%;z-index:600;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 6px 22px rgba(37,211,102,.45);animation:wapulse 2.8s ease-in-out infinite;transition:transform .3s var(--ease2);cursor:pointer}
+.wa-fab:hover{transform:scale(1.12)}
+.wa-fab svg{width:26px;height:26px;fill:#fff}
+@keyframes wapulse{0%,100%{box-shadow:0 6px 22px rgba(37,211,102,.4)}50%{box-shadow:0 6px 44px rgba(37,211,102,.72)}}
 
-  @keyframes foamline {
-    0%,100% { transform: scaleX(1) translateY(0); opacity: 0.35 }
-    50% { transform: scaleX(1.02) translateY(-2px); opacity: 0.6 }
-  }
+/* ══════════════════════════════════════════
+   REVEAL ANIMATION
+══════════════════════════════════════════ */
+.rev{opacity:0;transform:translateY(38px);transition:opacity .95s var(--ease3),transform .95s var(--ease3)}
+.rev.vis{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.32s}.d4{transition-delay:.44s}
+.rev-left{opacity:0;transform:translateX(-40px);transition:opacity .95s var(--ease3),transform .95s var(--ease3)}
+.rev-left.vis{opacity:1;transform:translateX(0)}
+.rev-right{opacity:0;transform:translateX(40px);transition:opacity .95s var(--ease3),transform .95s var(--ease3)}
+.rev-right.vis{opacity:1;transform:translateX(0)}
 
-  /* Sand texture dots */
-  .sand-dots {
-    position: absolute; inset: 0;
-    background-image:
-      radial-gradient(circle, rgba(180,140,60,0.3) 1px, transparent 1px),
-      radial-gradient(circle, rgba(255,230,160,0.2) 1px, transparent 1px);
-    background-size: 12px 12px, 8px 8px;
-    background-position: 0 0, 4px 4px;
-  }
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media(max-width:1100px){
+  nav{padding:1.5rem 2.5rem}
+  nav.inked{padding:1rem 2.5rem}
+  .nav-links,.nav-r{display:none}
+  .burger{display:flex}
+  #sobre,#acomods,#exp,#passeios,#galeria,#contato{padding:5rem 0}
+  .sobre-g{grid-template-columns:1fr}
+  .sobre-txt{padding:4rem 3rem}
+  .sobre-img img{height:380px;min-height:380px}
+  .ac-inner{grid-template-columns:1fr;padding-left:0}
+  .ac-inner img{height:220px}
+  .exp-block,.exp-kite{grid-template-columns:1fr}
+  .exp-photo img,.kite-car{min-height:320px;order:-1}
+  .exp-txt,.exp-txt.dark{padding:3.5rem 2.5rem;order:1}
+  .tours-head{flex-direction:column;padding:0 2.5rem; align-items:flex-start;}
+  .tours-g{grid-template-columns:1fr 1fr;padding:0 2.5rem}
+  .ac-head,.ac-list{padding:0 2.5rem}
+  .gal-head,.gal-hint{padding:0 2.5rem}
+  .ct-top{flex-direction:column;align-items:flex-start}
+  .ct-actions { align-self: flex-start; }
+  .ct-cards{grid-template-columns:1fr}
+  .ct-card{border-right:none;border-bottom:1px solid rgba(237,227,200,.08)}
+  .ct-card:last-child{border-bottom:none}
+  .ct-inner{padding:0 2.5rem}
+  .ft-top{grid-template-columns:1fr 1fr}
+  .ft-brand{grid-column:span 2}
+  .ft-inner{padding:0 2.5rem}
+}
 
-  /* Palm trees */
-  .palm-left, .palm-right {
-    position: absolute;
-    bottom: 19%;
-  }
-  .palm-left { left: 3%; }
-  .palm-right { right: 5%; transform: scaleX(-1); }
-
-  /* Seagulls */
-  .birds {
-    position: absolute;
-    top: 20%; left: 20%;
-    animation: birdfloat 8s ease-in-out infinite;
-  }
-
-  @keyframes birdfloat {
-    0%,100%{transform:translate(0,0)} 25%{transform:translate(20px,-8px)} 50%{transform:translate(40px,0)} 75%{transform:translate(20px,8px)}
-  }
-
-  /* ── CONTENT ── */
-  .content {
-    position: relative;
-    z-index: 10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
-    pointer-events: none;
-  }
-
-  .glass-card {
-    background: rgba(10, 30, 50, 0.45);
-    backdrop-filter: blur(18px) saturate(1.4);
-    -webkit-backdrop-filter: blur(18px) saturate(1.4);
-    border: 1px solid rgba(255,240,180,0.2);
-    border-radius: 20px;
-    padding: 56px 64px;
-    max-width: 640px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 8px 60px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.12);
-    pointer-events: all;
-    animation: fadeup 1.2s ease-out both;
-  }
-
-  @keyframes fadeup {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .tagline-top {
-    font-family: 'Jost', sans-serif;
-    font-weight: 200;
-    font-size: 11px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: rgba(255,220,120,0.85);
-    margin-bottom: 20px;
-    animation: fadeup 1.2s 0.2s ease-out both;
-  }
-
-  .brand {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 300;
-    font-size: clamp(36px, 6vw, 56px);
-    color: #fefdf8;
-    line-height: 1.1;
-    margin-bottom: 6px;
-    animation: fadeup 1.2s 0.3s ease-out both;
-  }
-  .brand em {
-    font-style: italic;
-    color: #f9d98a;
-  }
-
-  .divider {
-    width: 60px; height: 1px;
-    background: linear-gradient(to right, transparent, rgba(255,220,120,0.7), transparent);
-    margin: 24px auto;
-    animation: fadeup 1.2s 0.45s ease-out both;
-  }
-
-  .main-message {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 400;
-    font-style: italic;
-    font-size: clamp(22px, 4vw, 30px);
-    color: #fef9ee;
-    line-height: 1.3;
-    margin-bottom: 20px;
-    animation: fadeup 1.2s 0.5s ease-out both;
-  }
-
-  .sub-message {
-    font-family: 'Jost', sans-serif;
-    font-weight: 300;
-    font-size: 14px;
-    color: rgba(255,240,200,0.7);
-    line-height: 1.7;
-    letter-spacing: 0.3px;
-    margin-bottom: 36px;
-    animation: fadeup 1.2s 0.65s ease-out both;
-  }
-
-  .contact-row {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
-    animation: fadeup 1.2s 0.8s ease-out both;
-  }
-
-  .contact-btn {
-    font-family: 'Jost', sans-serif;
-    font-weight: 300;
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #f9d98a;
-    text-decoration: none;
-    padding: 11px 24px;
-    border: 1px solid rgba(249,217,138,0.45);
-    border-radius: 40px;
-    transition: background 0.3s, color 0.3s, border-color 0.3s;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    pointer-events: all;
-  }
-
-  .contact-btn:hover {
-    background: rgba(249,217,138,0.15);
-    border-color: rgba(249,217,138,0.8);
-    color: #fff8e0;
-  }
-
-  .wave-icon { font-size: 16px; }
-
-  .footer-note {
-    position: fixed;
-    bottom: 22px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 20;
-    font-family: 'Jost', sans-serif;
-    font-weight: 200;
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: rgba(255,235,170,0.5);
-    text-transform: uppercase;
-    white-space: nowrap;
-    animation: fadeup 1.5s 1.2s ease-out both;
-  }
-
-  /* Stars */
-  .stars {
-    position: absolute;
-    top: 0; left: 0; right: 0; height: 40%;
-    pointer-events: none;
-  }
-  .star {
-    position: absolute;
-    background: white;
-    border-radius: 50%;
-    animation: twinkle var(--d) ease-in-out infinite var(--del);
-    opacity: 0;
-  }
-  @keyframes twinkle {
-    0%,100%{opacity:0} 50%{opacity:var(--op)}
-  }
-
-  @media (max-width: 600px) {
-    .glass-card { padding: 36px 24px; }
-    .palm-right { display: none; }
-    .palm-left { left: -5%; }
-  }
+@media(max-width:700px){
+  .h-body{padding:0 1.5rem 4rem}
+  .h-title{font-size:clamp(3rem, 12vw, 5rem)}
+  .h-scroll{right:1.5rem}
+  .h-actions { flex-direction: column; width: 100%; align-items: stretch; gap:1rem;}
+  
+  .tours-g{grid-template-columns:1fr}
+  .t-card img{height:360px}
+  
+  .gal-frame:nth-child(1){width:80vw}
+  .gal-frame:nth-child(2){width:55vw}
+  .gal-frame:nth-child(3){width:65vw}
+  .gal-frame:nth-child(4){width:55vw}
+  .gal-frame:nth-child(5){width:72vw}
+  .gal-frame:nth-child(6){width:50vw}
+  
+  .ft-top{grid-template-columns:1fr}
+  .ft-brand{grid-column:span 1}
+  .ft-bot{flex-direction:column;gap:1.5rem;text-align:center}
+  
+  body{cursor:auto}
+  #dot,#ring{display:none}
+  a,button{cursor:pointer}
+  
+  .ac-list,.ac-head,.tours-head,.tours-g{padding-left:1.25rem;padding-right:1.25rem}
+  .ac-inner{padding-left:0;grid-template-columns:1fr}
+  .ac-inner img{height:200px}
+  .ac-trigger{gap:1rem; flex-wrap:wrap;}
+  .ac-name{font-size:1.5rem; min-width: 100%; order: 3; margin-top: 0.5rem;}
+  .ac-icon{ margin-left: auto; }
+  
+  nav{padding:1.25rem 1.5rem}
+  nav.inked{padding:.85rem 1.5rem}
+  
+  .exp-txt,.exp-txt.dark{padding:3rem 1.5rem}
+  .sobre-txt{padding:3rem 1.5rem}
+  
+  .ct-ask{font-size:2.4rem}
+  .ct-top{flex-direction:column;align-items:flex-start;gap:2rem}
+  .ct-actions { flex-direction: column; width: 100%; align-items: stretch;}
+  .ct-inner{padding:0 1.5rem}
+}
 </style>
 </head>
 <body>
 
-<!-- SCENE -->
-<div class="scene">
-  <!-- Sky -->
-  <div class="sky"></div>
+<div id="dot"></div>
+<div id="ring"></div>
 
-  <!-- Stars -->
-  <div class="stars" id="stars"></div>
+<div id="prog"></div>
 
-  <!-- Clouds -->
-  <div class="cloud cloud-1"></div>
-  <div class="cloud cloud-2"></div>
-  <div class="cloud cloud-3"></div>
+<a href="https://wa.me/5586995834198" target="_blank" rel="noopener noreferrer" class="wa-fab" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
-  <!-- Birds -->
-  <svg class="birds" width="70" height="30" viewBox="0 0 70 30" fill="none">
-    <path d="M0 15 Q5 8 10 15" stroke="rgba(255,240,200,0.6)" stroke-width="1.2" fill="none"/>
-    <path d="M14 10 Q19 3 24 10" stroke="rgba(255,240,200,0.5)" stroke-width="1.2" fill="none"/>
-    <path d="M30 18 Q34 12 38 18" stroke="rgba(255,240,200,0.4)" stroke-width="1" fill="none"/>
-    <path d="M50 8 Q55 2 60 8" stroke="rgba(255,240,200,0.35)" stroke-width="1" fill="none"/>
-  </svg>
-
-  <!-- Sun -->
-  <div class="sun"></div>
-
-  <!-- Ocean -->
-  <div class="ocean">
-    <div class="ocean-layer"></div>
-    <div class="sun-reflection"></div>
-    <div class="wave-wrap">
-      <svg width="100%" height="60" viewBox="0 0 800 60" preserveAspectRatio="none">
-        <path class="wave" d="M0 30 Q100 10 200 30 Q300 50 400 30 Q500 10 600 30 Q700 50 800 30"/>
-        <path class="wave2" d="M0 40 Q100 20 200 40 Q300 55 400 40 Q500 20 600 40 Q700 55 800 40"/>
-        <path class="wave" style="opacity:0.6" d="M0 20 Q80 5 160 20 Q240 38 320 20 Q400 5 480 20 Q560 38 640 20 Q720 5 800 20" />
-      </svg>
-    </div>
-  </div>
-
-  <!-- Beach -->
-  <div class="beach">
-    <div class="sand-dots"></div>
-  </div>
-
-  <!-- Palm Left -->
-  <svg class="palm-left" width="200" height="380" viewBox="0 0 200 380" style="overflow:visible">
-    <!-- trunk: curved left-leaning, segmented look -->
-    <path d="M100 380 C98 340 95 300 92 260 C89 220 86 180 82 145 C79 115 74 85 68 58" stroke="#7a4a18" stroke-width="13" fill="none" stroke-linecap="round"/>
-    <path d="M100 380 C98 340 95 300 92 260 C89 220 86 180 82 145 C79 115 74 85 68 58" stroke="#5a3210" stroke-width="9" fill="none" stroke-linecap="round" stroke-dasharray="18 10" opacity="0.45"/>
-    <!-- frond 1: sweeps far left-down -->
-    <path d="M68 58 C50 52 20 48 -18 72" stroke="#1a5c14" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-    <path d="M68 58 C52 55 30 54 10 64 C-2 70 -12 72 -18 72" fill="#2a7a1e" opacity="0.9" stroke="none"/>
-    <path d="M68 58 C50 62 26 65 2 74 C-8 78 -16 76 -18 72" fill="#1e6418" opacity="0.7" stroke="none"/>
-    <!-- frond 2: sweeps far right-up -->
-    <path d="M68 58 C88 44 118 28 155 20" stroke="#1a5c14" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-    <path d="M68 58 C86 48 110 36 138 26 C148 22 155 20 155 20" fill="#2a7a1e" opacity="0.9" stroke="none"/>
-    <path d="M68 58 C84 54 106 46 132 38 C144 34 153 22 155 20" fill="#1e6418" opacity="0.7" stroke="none"/>
-    <!-- frond 3: goes left-up -->
-    <path d="M68 58 C55 38 36 16 8 -4" stroke="#1a5c14" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-    <path d="M68 58 C57 42 44 24 26 8 C18 0 10 -2 8 -4" fill="#32883e" opacity="0.85" stroke="none"/>
-    <path d="M68 58 C59 46 48 32 32 18 C22 8 12 -2 8 -4" fill="#26702e" opacity="0.65" stroke="none"/>
-    <!-- frond 4: goes right -->
-    <path d="M68 58 C90 52 120 48 158 55" stroke="#1a5c14" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-    <path d="M68 58 C88 56 112 54 140 56 C150 57 157 56 158 55" fill="#2a7a1e" opacity="0.85" stroke="none"/>
-    <path d="M68 58 C86 62 110 62 138 62 C150 62 157 58 158 55" fill="#1e6418" opacity="0.6" stroke="none"/>
-    <!-- frond 5: droops left -->
-    <path d="M68 58 C58 68 42 82 14 98" stroke="#22701a" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <path d="M68 58 C60 70 48 82 28 94 C20 98 15 100 14 98" fill="#2a7a1e" opacity="0.75" stroke="none"/>
-    <path d="M68 58 C62 72 52 86 34 98 C24 104 16 102 14 98" fill="#1c5c16" opacity="0.55" stroke="none"/>
-    <!-- frond 6: droops right -->
-    <path d="M68 58 C82 66 100 80 118 102" stroke="#22701a" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <path d="M68 58 C80 68 96 82 112 100 C116 104 118 104 118 102" fill="#2a7a1e" opacity="0.75" stroke="none"/>
-    <path d="M68 58 C78 70 92 86 106 104 C112 110 118 106 118 102" fill="#1c5c16" opacity="0.55" stroke="none"/>
-    <!-- coconuts cluster -->
-    <circle cx="72" cy="68" r="7" fill="#7a4a10"/>
-    <circle cx="63" cy="64" r="6.5" fill="#8a5618"/>
-    <circle cx="78" cy="62" r="6" fill="#6a3c0c"/>
-  </svg>
-
-  <!-- Palm Right (leans right, different shape) -->
-  <svg class="palm-right" width="200" height="360" viewBox="0 0 200 360" style="overflow:visible">
-    <!-- trunk -->
-    <path d="M90 360 C92 322 96 285 100 248 C104 210 108 172 114 138 C119 108 126 80 134 54" stroke="#7a4a18" stroke-width="13" fill="none" stroke-linecap="round"/>
-    <path d="M90 360 C92 322 96 285 100 248 C104 210 108 172 114 138 C119 108 126 80 134 54" stroke="#5a3210" stroke-width="9" fill="none" stroke-linecap="round" stroke-dasharray="18 10" opacity="0.45"/>
-    <!-- frond 1: far left -->
-    <path d="M134 54 C112 46 82 38 44 44" stroke="#1a5c14" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-    <path d="M134 54 C116 50 92 46 66 48 C56 49 48 46 44 44" fill="#2a7a1e" opacity="0.9" stroke="none"/>
-    <path d="M134 54 C118 58 96 58 70 58 C58 58 48 50 44 44" fill="#1e6418" opacity="0.65" stroke="none"/>
-    <!-- frond 2: far right-up -->
-    <path d="M134 54 C158 42 188 22 218 10" stroke="#1a5c14" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-    <path d="M134 54 C156 46 180 30 206 16 C212 12 217 10 218 10" fill="#32883e" opacity="0.9" stroke="none"/>
-    <path d="M134 54 C154 52 176 38 202 24 C210 18 216 12 218 10" fill="#26702e" opacity="0.65" stroke="none"/>
-    <!-- frond 3: up-left -->
-    <path d="M134 54 C124 34 110 12 90 -8" stroke="#1a5c14" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-    <path d="M134 54 C126 38 116 18 100 0 C96 -4 91 -7 90 -8" fill="#2a7a1e" opacity="0.88" stroke="none"/>
-    <path d="M134 54 C128 42 120 24 106 6 C100 -2 92 -6 90 -8" fill="#1e6418" opacity="0.65" stroke="none"/>
-    <!-- frond 4: up-right -->
-    <path d="M134 54 C150 40 172 24 200 18" stroke="#1a5c14" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-    <path d="M134 54 C148 44 168 30 196 22 C199 21 200 19 200 18" fill="#2a7a1e" opacity="0.85" stroke="none"/>
-    <path d="M134 54 C146 48 164 38 190 30 C198 26 200 20 200 18" fill="#1c5c16" opacity="0.6" stroke="none"/>
-    <!-- frond 5: droops left -->
-    <path d="M134 54 C120 64 102 80 78 100" stroke="#22701a" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <path d="M134 54 C122 66 108 80 88 96 C84 100 80 102 78 100" fill="#2a7a1e" opacity="0.75" stroke="none"/>
-    <path d="M134 54 C124 68 112 84 92 100 C86 106 80 104 78 100" fill="#1c5c16" opacity="0.55" stroke="none"/>
-    <!-- frond 6: droops right -->
-    <path d="M134 54 C148 62 162 76 172 100" stroke="#22701a" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <path d="M134 54 C146 64 160 78 168 98 C170 102 172 103 172 100" fill="#2a7a1e" opacity="0.75" stroke="none"/>
-    <path d="M134 54 C144 66 156 82 164 102 C168 110 172 106 172 100" fill="#1c5c16" opacity="0.55" stroke="none"/>
-    <!-- coconuts -->
-    <circle cx="130" cy="65" r="7" fill="#7a4a10"/>
-    <circle cx="140" cy="62" r="6.5" fill="#8a5618"/>
-    <circle cx="124" cy="60" r="6" fill="#6a3c0c"/>
-  </svg>
+<div class="mob" id="mob">
+  <button class="mob-x" id="mobx">×</button>
+  <a href="#sobre"    onclick="cmob()" data-pt="A Pousada" data-en="The Inn">A Pousada</a>
+  <a href="#acomods"  onclick="cmob()" data-pt="Bungalows" data-en="Bungalows">Bungalows</a>
+  <a href="#exp"      onclick="cmob()" data-pt="Experiências" data-en="Experiences">Experiências</a>
+  <a href="#passeios" onclick="cmob()" data-pt="Passeios" data-en="Tours">Passeios</a>
+  <a href="#contato"  onclick="cmob()" data-pt="Contato" data-en="Contact">Contato</a>
 </div>
 
-<!-- CONTENT -->
-<div class="content">
-  <div class="glass-card">
-    <p class="tagline-top">✦ Pousada Delta Chalés ✦</p>
-    <h1 class="brand">Paraíso em<br><em>Construção</em></h1>
-    <div class="divider"></div>
-    <p class="main-message">Estamos preparando algo<br>ainda mais especial para você</p>
-    <p class="sub-message">
-      Nosso site está passando por melhorias para oferecer<br>
-      a melhor experiência antes da sua chegada ao paraíso.<br>
-      Em breve estaremos de volta com novidades.
+<nav id="nav">
+  <a href="#hero" class="nav-logo">
+    <img src="imagens/logo delta chales logo branca.png" alt="Delta Chalés">
+    <span class="nav-logo-name">Delta Chalés</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre" data-pt="A Pousada" data-en="The Inn">A Pousada</a></li>
+    <li><a href="#acomods" data-pt="Bungalows" data-en="Bungalows">Bungalows</a></li>
+    <li><a href="#exp" data-pt="Experiências" data-en="Experiences">Experiências</a></li>
+    <li><a href="#passeios" data-pt="Passeios" data-en="Tours">Passeios</a></li>
+    <li><a href="#contato" data-pt="Contato" data-en="Contact">Contato</a></li>
+  </ul>
+  <div class="nav-r">
+    <button class="l-btn on" onclick="setLang('pt')">PT</button>
+    <button class="l-btn"    onclick="setLang('en')">EN</button>
+  </div>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<section id="hero">
+  <div class="h-bg"></div>
+  <div class="h-ov"></div>
+  <div class="h-body">
+    <p class="h-label" data-pt="Pousada — Tutóia, Maranhão — Rota das Emoções" data-en="Guesthouse — Tutóia, Maranhão — Route of Emotions">Pousada — Tutóia, Maranhão — Rota das Emoções</p>
+    <h1 class="h-title">Delta<br><em>Chalés</em></h1>
+    <p class="h-sub" data-pt="Entre o mar e o Delta do Parnaíba" data-en="Between the sea and the Parnaíba Delta">Entre o mar e o Delta do Parnaíba</p>
+    <div class="h-actions">
+      <a href="#acomods" class="btn-gold" data-pt="Ver Bungalows" data-en="View Bungalows">Ver Bungalows</a>
+      <a href="https://www.booking.com/hotel/br/delta-chale-tutoia1.pt-br.html?aid=304142&amp;label=gen173nr-10CBcoggI46AdIM1gEaCCIAQGYATO4ARfIAQzYAQPoAQH4AQGIAgGoAgG4Ap7Ph9EGwAIB0gIkMTg5NTcyYjEtMjE4Yi00N2YyLWJjNDMtZDY2ODk1YzFiMjY52AIB4AIB&amp;sid=eb248ebf2b7d912e1508ce1d752a59c8&amp;dest_id=-677288&amp;dest_type=city&amp;dist=0&amp;group_adults=2&amp;group_children=0&amp;hapos=1&amp;hpos=1&amp;no_rooms=1&amp;req_adults=2&amp;req_children=0&amp;room1=A%2CA&amp;sb_price_type=total&amp;sr_order=popularity&amp;srepoch=1780606997&amp;srpvid=0e9f940867280536&amp;type=total&amp;ucfs=1&amp;" target="_blank" rel="noopener noreferrer" class="btn-outline" data-pt="Reservar no Booking" data-en="Book on Booking">Reservar no Booking</a>
+    </div>
+  </div>
+  <div class="h-scroll">
+    <div class="h-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee-track" id="mtrack">
+    <span class="marquee-item" data-pt="Kitesurf" data-en="Kitesurfing">Kitesurf</span><span class="marquee-dot">·</span>
+    <span class="marquee-item" data-pt="Delta do Parnaíba" data-en="Parnaíba Delta">Delta do Parnaíba</span><span class="marquee-dot">·</span>
+    <span class="marquee-item" data-pt="Bungalows à Beira-Mar" data-en="Beachfront Bungalows">Bungalows à Beira-Mar</span><span class="marquee-dot">·</span>
+    <span class="marquee-item" data-pt="Rota das Emoções" data-en="Route of Emotions">Rota das Emoções</span><span class="marquee-dot">·</span>
+    <span class="marquee-item" data-pt="Tutóia, Maranhão" data-en="Tutóia, Maranhão">Tutóia, Maranhão</span><span class="marquee-dot">·</span>
+    <span class="marquee-item" data-pt="Café da Manhã na Praia" data-en="Breakfast on the Beach">Café da Manhã na Praia</span><span class="marquee-dot">·</span>
+    <span class="marquee-item" data-pt="Quadriciclo nas Dunas" data-en="Dune Buggy Tour">Quadriciclo nas Dunas</span><span class="marquee-dot">·</span>
+    <span class="marquee-item" data-pt="Passeio de Lancha" data-en="Speedboat Tour">Passeio de Lancha</span><span class="marquee-dot">·</span>
+    <span class="marquee-item" data-pt="Kitesurf" data-en="Kitesurfing">Kitesurf</span><span class="marquee-dot">·</span>
+    <span class="marquee-item" data-pt="Delta do Parnaíba" data-en="Parnaíba Delta">Delta do Parnaíba</span><span class="marquee-dot">·</span>
+    <span class="marquee-item" data-pt="Bungalows à Beira-Mar" data-en="Beachfront Bungalows">Bungalows à Beira-Mar</span><span class="marquee-dot">·</span>
+    <span class="marquee-item" data-pt="Rota das Emoções" data-en="Route of Emotions">Rota das Emoções</span><span class="marquee-dot">·</span>
+    <span class="marquee-item" data-pt="Tutóia, Maranhão" data-en="Tutóia, Maranhão">Tutóia, Maranhão</span><span class="marquee-dot">·</span>
+    <span class="marquee-item" data-pt="Café da Manhã na Praia" data-en="Breakfast on the Beach">Café da Manhã na Praia</span><span class="marquee-dot">·</span>
+    <span class="marquee-item" data-pt="Quadriciclo nas Dunas" data-en="Dune Buggy Tour">Quadriciclo nas Dunas</span><span class="marquee-dot">·</span>
+    <span class="marquee-item" data-pt="Passeio de Lancha" data-en="Speedboat Tour">Passeio de Lancha</span><span class="marquee-dot">·</span>
+  </div>
+</div>
+
+<section id="sobre">
+  <div class="sobre-g">
+    <div class="sobre-img rev-left">
+      <img src="imagens/delta-chales.jpg" alt="Delta Chalés — bar e deck com vista para o mar" loading="lazy">
+      <div class="sobre-img-badge">
+        <p style="font-family:var(--di);font-size:1.1rem;font-style:italic;color:var(--gold2)" data-pt="“Onde o vento encontra a alma”" data-en="“Where the wind meets the soul”">"Onde o vento encontra a alma"</p>
+      </div>
+    </div>
+    <div class="sobre-txt rev-right">
+      <img src="imagens/logo delta chales logo branca.png" alt="Delta Chalés" style="width:56px;height:56px;object-fit:contain;margin-bottom:1.5rem;opacity:.8">
+      <span class="sec-label" data-pt="A Pousada" data-en="The Guesthouse">A Pousada</span>
+      <h2 class="sec-h" data-pt="Um refúgio entre<br>o mar e o <em>Delta</em>" data-en="A refuge between<br>the sea and the <em>Delta</em>">Um refúgio entre<br>o mar e o <em>Delta</em></h2>
+      <p class="sobre-body" data-pt="Bem-vindo à Pousada Delta Chalés em Tutóia, MA — seu refúgio ideal entre o mar e o Delta do Parnaíba. Aqui, o tempo desacelera. Cada detalhe foi pensado para que você vivencie momentos de tranquilidade, conforto e conexão com a natureza. Nossa pousada une rusticidade, charme e hospitalidade em um cenário privilegiado, perfeito para quem busca relaxamento ou aventura na Rota das Emoções." data-en="Welcome to Pousada Delta Chalés in Tutóia, MA — your ideal refuge between the sea and the Parnaíba Delta. Here, time slows down. Every detail has been crafted for moments of tranquility, comfort and connection with nature. Our guesthouse blends rusticity, charm and hospitality in a privileged setting, perfect for those seeking relaxation or adventure on the Route of Emotions.">
+        Bem-vindo à Pousada Delta Chalés em Tutóia, MA — seu refúgio ideal entre o mar e o Delta do Parnaíba. Aqui, o tempo desacelera. Cada detalhe foi pensado para que você vivencie momentos de tranquilidade, conforto e conexão com a natureza. Nossa pousada une rusticidade, charme e hospitalidade em um cenário privilegiado, perfeito para quem busca relaxamento ou aventura na Rota das Emoções.
+      </p>
+      <div class="stats-row">
+        <div class="stat"><span class="stat-n">5</span><span class="stat-l" data-pt="Bungalows" data-en="Bungalows">Bungalows</span></div>
+        <div class="stat"><span class="stat-n">365</span><span class="stat-l" data-pt="Dias de vento" data-en="Days of wind">Dias de vento</span></div>
+        <div class="stat"><span class="stat-n">∞</span><span class="stat-l" data-pt="Memórias" data-en="Memories">Memórias</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="acomods">
+  <div class="ac-head rev">
+    <span class="sec-label" data-pt="Hospedagem" data-en="Accommodation">Hospedagem</span>
+    <h2 class="sec-h" data-pt="Nossos <em>Bungalows</em>" data-en="Our <em>Bungalows</em>">Nossos <em>Bungalows</em></h2>
+  </div>
+  <div class="ac-list">
+
+    <div class="ac-item">
+      <button class="ac-trigger" onclick="tog(this)" aria-expanded="false">
+        <span class="ac-num">01</span>
+        <span class="ac-name" data-pt="Bungalow Mar" data-en="Sea Bungalow">Bungalow Mar</span>
+        <div class="ac-icon">+</div>
+      </button>
+      <div class="ac-body">
+        <div class="ac-inner">
+          <img src="imagens/Bungalow Mar.jpg" alt="Bungalow Mar" loading="lazy">
+          <div class="ac-desc">
+            <p data-pt="Um refúgio aconchegante com vista privilegiada para o mar. Perfeito para casais em busca de romance, tranquilidade e a brisa suave do oceano ao amanhecer." data-en="A cozy refuge with a privileged sea view. Perfect for couples seeking romance, tranquility and the gentle ocean breeze at dawn.">Um refúgio aconchegante com vista privilegiada para o mar. Perfeito para casais em busca de romance, tranquilidade e a brisa suave do oceano ao amanhecer.</p>
+            <div class="ac-feats">
+              <span class="feat-tag" data-pt="Vista Mar" data-en="Sea View">Vista Mar</span>
+              <span class="feat-tag" data-pt="Ar-condicionado" data-en="Air Conditioning">Ar-condicionado</span>
+              <span class="feat-tag">Wi-Fi</span>
+              <span class="feat-tag" data-pt="Varanda" data-en="Balcony">Varanda</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ac-item">
+      <button class="ac-trigger" onclick="tog(this)" aria-expanded="false">
+        <span class="ac-num">02</span>
+        <span class="ac-name" data-pt="Bungalow Kite" data-en="Kite Bungalow">Bungalow Kite</span>
+        <div class="ac-icon">+</div>
+      </button>
+      <div class="ac-body">
+        <div class="ac-inner">
+          <img src="imagens/Bungalow Kite.jpg" alt="Bungalow Kite" loading="lazy">
+          <div class="ac-desc">
+            <p data-pt="Especialmente pensado para kitesurf lovers, com fácil acesso às melhores praias e spots da região. Desperte já pronto para a aventura nos melhores ventos do Maranhão." data-en="Specially designed for kitesurf lovers, with easy access to the best beaches and spots. Wake up ready for adventure in Maranhão's best winds.">Especialmente pensado para kitesurf lovers, com fácil acesso às melhores praias e spots da região. Desperte já pronto para a aventura nos melhores ventos do Maranhão.</p>
+            <div class="ac-feats">
+              <span class="feat-tag" data-pt="Acesso Praia" data-en="Beach Access">Acesso Praia</span>
+              <span class="feat-tag" data-pt="Ar-condicionado" data-en="Air Conditioning">Ar-condicionado</span>
+              <span class="feat-tag">Wi-Fi</span>
+              <span class="feat-tag" data-pt="Estocagem de Kite" data-en="Kite Storage">Estocagem de Kite</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ac-item">
+      <button class="ac-trigger" onclick="tog(this)" aria-expanded="false">
+        <span class="ac-num">03</span>
+        <span class="ac-name" data-pt="Bungalow do Vento" data-en="Wind Bungalow">Bungalow do Vento</span>
+        <div class="ac-icon">+</div>
+      </button>
+      <div class="ac-body">
+        <div class="ac-inner">
+          <img src="imagens/Bungalow do Vento.jpg" alt="Bungalow do Vento" loading="lazy">
+          <div class="ac-desc">
+            <p data-pt="Espaçoso e aconchegante, ideal para famílias. Oferece todas as comodidades para uma estadia confortável com crianças, cercado pelo jardim tropical da pousada." data-en="Spacious and cozy, ideal for families. Offers all amenities for a comfortable stay with children, surrounded by the guesthouse's tropical garden.">Espaçoso e aconchegante, ideal para famílias. Oferece todas as comodidades para uma estadia confortável com crianças, cercado pelo jardim tropical da pousada.</p>
+            <div class="ac-feats">
+              <span class="feat-tag" data-pt="Ideal Famílias" data-en="Family Friendly">Ideal Famílias</span>
+              <span class="feat-tag" data-pt="Ar-condicionado" data-en="Air Conditioning">Ar-condicionado</span>
+              <span class="feat-tag">Wi-Fi</span>
+              <span class="feat-tag" data-pt="Jardim" data-en="Garden">Jardim</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ac-item">
+      <button class="ac-trigger" onclick="tog(this)" aria-expanded="false">
+        <span class="ac-num">04</span>
+        <span class="ac-name" data-pt="Jardim Bungalow" data-en="Garden Bungalow">Jardim Bungalow</span>
+        <div class="ac-icon">+</div>
+      </button>
+      <div class="ac-body">
+        <div class="ac-inner">
+          <img src="imagens/Jardim Bungalow.jpg" alt="Jardim Bungalow" loading="lazy">
+          <div class="ac-desc">
+            <p data-pt="Integrado harmoniosamente à paisagem tropical, oferece uma conexão única com a fauna e flora local. A natureza ao redor é parte essencial da experiência." data-en="Harmoniously integrated into the tropical landscape, offering a unique connection with local fauna and flora. The surrounding nature is an essential part of the experience.">Integrado harmoniosamente à paisagem tropical, oferece uma conexão única com a fauna e flora local. A natureza ao redor é parte essencial da experiência.</p>
+            <div class="ac-feats">
+              <span class="feat-tag" data-pt="Vista Jardim" data-en="Garden View">Vista Jardim</span>
+              <span class="feat-tag" data-pt="Ar-condicionado" data-en="Air Conditioning">Ar-condicionado</span>
+              <span class="feat-tag">Wi-Fi</span>
+              <span class="feat-tag" data-pt="Rede" data-en="Hammock">Rede</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ac-item">
+      <button class="ac-trigger" onclick="tog(this)" aria-expanded="false">
+        <span class="ac-num">05</span>
+        <span class="ac-name" data-pt="Bungalow Duna" data-en="Dune Bungalow">Bungalow Duna</span>
+        <div class="ac-icon">+</div>
+      </button>
+      <div class="ac-body">
+        <div class="ac-inner">
+          <img src="imagens/Bungalow Duna.jpg" alt="Bungalow Duna" loading="lazy">
+          <div class="ac-desc">
+            <p data-pt="Refúgio premium com vista para as dunas e o mar. Varanda privativa com paisagem privilegiada, perfeita para contemplar o pôr do sol ao final de cada aventura." data-en="Premium refuge with views of the dunes and sea. Private veranda with privileged scenery, perfect for watching the sunset at the end of each adventure.">Refúgio premium com vista para as dunas e o mar. Varanda privativa com paisagem privilegiada, perfeita para contemplar o pôr do sol ao final de cada aventura.</p>
+            <div class="ac-feats">
+              <span class="feat-tag" data-pt="Vista Dunas" data-en="Dune View">Vista Dunas</span>
+              <span class="feat-tag" data-pt="Ar-condicionado" data-en="Air Conditioning">Ar-condicionado</span>
+              <span class="feat-tag">Wi-Fi</span>
+              <span class="feat-tag" data-pt="Varanda Premium" data-en="Premium Balcony">Varanda Premium</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="exp">
+  <div class="exp-block rev">
+    <div class="exp-photo">
+      <img src="imagens/breakfast.jpg" alt="Café da manhã na praia" loading="lazy">
+    </div>
+    <div class="exp-txt">
+      <span class="sec-label" data-pt="Experiências" data-en="Experiences">Experiências</span>
+      <h2 class="exp-h" data-pt="Café da<br>Manhã" data-en="Breakfast">Café da<br>Manhã</h2>
+      <p class="exp-body" data-pt="Na Delta Chalés, o café da manhã é mais que uma refeição — é um ritual pacífico para começar o dia com calma e alegria. Servido numa área aconchegante de frente para a praia, aproveite cada mordida ao som das ondas e da suave brisa do mar." data-en="At Delta Chalés, breakfast is more than just a meal — it's a peaceful ritual to start your day with calm and joy. Served in a cozy, beachfront area, enjoy every bite to the sound of waves and the gentle ocean breeze.">
+        Na Delta Chalés, o café da manhã é mais que uma refeição — é um ritual pacífico para começar o dia com calma e alegria. Servido numa área aconchegante de frente para a praia, aproveite cada mordida ao som das ondas e da suave brisa do mar.
+      </p>
+    </div>
+  </div>
+  <div class="exp-block rev">
+    <div class="exp-txt dark">
+      <span class="sec-label" data-pt="Esporte" data-en="Sport">Esporte</span>
+      <h2 class="exp-h" data-pt="Kitesurf" data-en="Kitesurfing">Kitesurf</h2>
+      <p class="exp-body" data-pt="Tutóia é conhecida mundialmente por suas condições ideais de kitesurf — e a Delta Chalés é sua base perfeita. Nossa localização oferece fácil acesso aos melhores spots da região, com vento consistente durante todo o ano." data-en="Tutóia is world-renowned for its ideal kitesurf conditions — and Delta Chalés is your perfect base. Our location gives easy access to the best spots in the region, with consistent wind year-round.">
+        Tutóia é conhecida mundialmente por suas condições ideais de kitesurf — e a Delta Chalés é sua base perfeita. Nossa localização oferece fácil acesso aos melhores spots da região, com vento consistente durante todo o ano.
+      </p>
+      <ul class="exp-offers">
+        <li data-pt="Translado aeroporto" data-en="Airport transfer">Translado aeroporto</li>
+        <li data-pt="Aulas de kitesurfing" data-en="Kitesurf lessons">Aulas de kitesurfing</li>
+        <li data-pt="Kitetrips (downwinders)" data-en="Kite trips (downwinders)">Kitetrips (downwinders)</li>
+      </ul>
+    </div>
+    <div class="kite-car" id="kcar">
+      <img src="imagens/kitesurf.jpg"  alt="Kitesurf em Tutóia" class="on" loading="lazy">
+      <img src="imagens/kitesurf2.jpg" alt="Kitesurf em Tutóia" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section id="passeios">
+  <div class="tours-head rev">
+    <div class="tours-head-l">
+      <span class="sec-label" data-pt="Aventura" data-en="Adventure">Aventura</span>
+      <h2 class="sec-h" data-pt="Passeios &<br><em>Atividades</em>" data-en="Tours &<br><em>Activities</em>">Passeios &<br><em>Atividades</em></h2>
+    </div>
+    <p class="tours-head-r" data-pt="Experiências autênticas em Tutóia que conectam você ao Delta do Parnaíba, às praias e à natureza — sempre com parceiros de confiança e o cuidado especial que começa aqui na pousada." data-en="Authentic experiences in Tutóia connecting you to the Parnaíba Delta, beaches and nature — always with trusted partners and the special care that starts here at the guesthouse.">
+      Experiências autênticas em Tutóia que conectam você ao Delta do Parnaíba, às praias e à natureza — sempre com parceiros de confiança e o cuidado especial que começa aqui na pousada.
     </p>
-    <div class="contact-row">
-      <a class="contact-btn" href="https://wa.me/5586995834198" target="_blank">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.112 1.523 5.847L0 24l6.335-1.508A11.93 11.93 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.805 9.805 0 01-5.027-1.384l-.36-.214-3.732.889.934-3.618-.235-.372A9.799 9.799 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182c5.42 0 9.818 4.396 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
-        WhatsApp
-      </a>
-      <a class="contact-btn" href="mailto:Pousadadeltachales@gmail.com">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-        E-mail
-      </a>
-      <a class="contact-btn" href="https://www.instagram.com/pousada_delta.chales/" target="_blank">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
-        Instagram
-      </a>
+  </div>
+  <div class="tours-g">
+    <div class="t-card rev d1">
+      <img src="imagens/praia.jpg" alt="Circuito de Praia" loading="lazy">
+      <div class="t-ov">
+        <p class="t-num">01</p>
+        <h3 class="t-title" data-pt="Circuito de Praia" data-en="Beach Circuit">Circuito de Praia</h3>
+        <p class="t-desc" data-pt="Explore as praias mais deslumbrantes de Tutóia: Praia da Barra, Praia do Amor e Praia dos Félix. Buggy, 4×4 ou quadriciclo — você escolhe o ritmo." data-en="Explore Tutóia's most stunning beaches. Praia da Barra, Praia do Amor and Praia dos Félix. Buggy, 4×4 or quad — you choose the pace.">Explore as praias mais deslumbrantes de Tutóia: Praia da Barra, Praia do Amor e Praia dos Félix. Buggy, 4×4 ou quadriciclo — você escolhe o ritmo.</p>
+        <span class="t-tag" data-pt="Saiba mais →" data-en="Learn more →">Saiba mais →</span>
+      </div>
+    </div>
+    <div class="t-card rev d2">
+      <img src="imagens/quadriciclo.jpg" alt="Quadriciclo nas Dunas" loading="lazy">
+      <div class="t-ov">
+        <p class="t-num">02</p>
+        <h3 class="t-title" data-pt="Quadriciclo<br>nas Dunas" data-en="Dune<br>Quad Ride">Quadriciclo<br>nas Dunas</h3>
+        <p class="t-desc" data-pt="Sinta a liberdade de explorar dunas e trilhas. O vento no rosto, a emoção do passeio e as vistas deslumbrantes fazem desta uma das aventuras favoritas da região." data-en="Feel the freedom of exploring dunes and trails. The wind on your face, the thrill and breathtaking views make this a favorite adventure.">Sinta a liberdade de explorar dunas e trilhas. O vento no rosto, a emoção do passeio e as vistas deslumbrantes fazem desta uma das aventuras favoritas da região.</p>
+        <span class="t-tag" data-pt="Saiba mais →" data-en="Learn more →">Saiba mais →</span>
+      </div>
+    </div>
+    <div class="t-card rev d3">
+      <img src="imagens/lancha.jpg" alt="Passeio de Lancha no Delta do Parnaíba" loading="lazy">
+      <div class="t-ov">
+        <p class="t-num">03</p>
+        <h3 class="t-title" data-pt="Passeio<br>de Lancha" data-en="Speedboat<br>Tour">Passeio<br>de Lancha</h3>
+        <p class="t-desc" data-pt="Navegue pelo único delta em mar aberto das Américas. Ilhas desertas, dunas escondidas e a mágica revoada dos guarás — memórias que você nunca esquecerá." data-en="Sail through the only open-sea delta in the Americas. Deserted islands, hidden dunes and the magical scarlet ibis flight — memories you'll never forget.">Navegue pelo único delta em mar aberto das Américas. Ilhas desertas, dunas escondidas e a mágica revoada dos guarás — memórias que você nunca esquecerá.</p>
+        <span class="t-tag" data-pt="Saiba mais →" data-en="Learn more →">Saiba mais →</span>
+      </div>
     </div>
   </div>
+</section>
+
+<section id="galeria">
+  <div class="gal-head rev">
+    <span class="sec-label" data-pt="Galeria" data-en="Gallery">Galeria</span>
+    <h2 class="sec-h" data-pt="A Beleza<br>do <em>Lugar</em>" data-en="The Beauty<br>of the <em>Place</em>">A Beleza<br>do <em>Lugar</em></h2>
+  </div>
+  <div class="gal-strip" id="gstrip">
+    <div class="gal-frame"><img src="imagens/praia.jpg" alt="Praia de Tutóia" loading="lazy"><div class="gal-cap"><span data-pt="Praia de Tutóia" data-en="Tutóia Beach">Praia de Tutóia</span></div></div>
+    <div class="gal-frame"><img src="imagens/kitesurf.jpg" alt="Kitesurf" loading="lazy"><div class="gal-cap"><span>Kitesurf</span></div></div>
+    <div class="gal-frame"><img src="imagens/Jardim Bungalow.jpg" alt="Jardim da Pousada" loading="lazy"><div class="gal-cap"><span data-pt="Jardim da Pousada" data-en="Guesthouse Garden">Jardim da Pousada</span></div></div>
+    <div class="gal-frame"><img src="imagens/lancha.jpg" alt="Delta do Parnaíba" loading="lazy"><div class="gal-cap"><span data-pt="Delta do Parnaíba" data-en="Parnaíba Delta">Delta do Parnaíba</span></div></div>
+    <div class="gal-frame"><img src="imagens/quadriciclo.jpg" alt="Quadriciclo nas Dunas" loading="lazy"><div class="gal-cap"><span data-pt="Dunas de Tutóia" data-en="Tutóia Dunes">Dunas de Tutóia</span></div></div>
+    <div class="gal-frame"><img src="imagens/breakfast.jpg" alt="Café da Manhã" loading="lazy"><div class="gal-cap"><span data-pt="Café da Manhã" data-en="Breakfast">Café da Manhã</span></div></div>
+  </div>
+  <div class="gal-hint">
+    <div class="gal-hint-line"></div>
+    <span data-pt="Arraste para explorar" data-en="Drag to explore">Arraste para explorar</span>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="ct-ghost">Delta</div>
+  <div class="ct-inner rev">
+    <div class="ct-top">
+      <h2 class="ct-ask" data-pt="Vamos planejar<br>sua <em>escapada</em>?" data-en="Shall we plan<br>your <em>getaway</em>?">Vamos planejar<br>sua <em>escapada</em>?</h2>
+      
+      <div class="ct-actions">
+        <a href="https://wa.me/5586995834198" target="_blank" rel="noopener noreferrer" class="ct-btn ct-wa">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span data-pt="Fale no WhatsApp" data-en="Chat on WhatsApp">Fale no WhatsApp</span>
+        </a>
+        <a href="https://www.booking.com/hotel/br/delta-chale-tutoia1.pt-br.html?aid=304142&amp;label=gen173nr-10CBcoggI46AdIM1gEaCCIAQGYATO4ARfIAQzYAQPoAQH4AQGIAgGoAgG4Ap7Ph9EGwAIB0gIkMTg5NTcyYjEtMjE4Yi00N2YyLWJjNDMtZDY2ODk1YzFiMjY52AIB4AIB&amp;sid=eb248ebf2b7d912e1508ce1d752a59c8&amp;dest_id=-677288&amp;dest_type=city&amp;dist=0&amp;group_adults=2&amp;group_children=0&amp;hapos=1&amp;hpos=1&amp;no_rooms=1&amp;req_adults=2&amp;req_children=0&amp;room1=A%2CA&amp;sb_price_type=total&amp;sr_order=popularity&amp;srepoch=1780606997&amp;srpvid=0e9f940867280536&amp;type=total&amp;ucfs=1&amp;" target="_blank" rel="noopener noreferrer" class="ct-btn ct-bk">
+          <svg viewBox="0 0 24 24"><path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/></svg>
+          <span data-pt="Reservar no Booking" data-en="Book on Booking">Reservar no Booking</span>
+        </a>
+      </div>
+    </div>
+    <div class="ct-cards">
+      <div class="ct-card">
+        <p class="ct-lbl" data-pt="Telefone / WhatsApp" data-en="Phone / WhatsApp">Telefone / WhatsApp</p>
+        <p class="ct-val"><a href="tel:+5586995834198">+55 (86) 99583-4198</a></p>
+      </div>
+      <div class="ct-card">
+        <p class="ct-lbl">E-mail</p>
+        <p class="ct-val"><a href="mailto:pousadadeltachales@gmail.com">pousadadeltachales<br>@gmail.com</a></p>
+      </div>
+      <div class="ct-card">
+        <p class="ct-lbl" data-pt="Localização" data-en="Location">Localização</p>
+        <p class="ct-val" data-pt="Tutóia — MA<br>Brasil" data-en="Tutóia — MA<br>Brazil">Tutóia — MA<br>Brasil</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="mapa">
+  <iframe src="https://www.google.com/maps?q=Pousada+Delta+Chalés+Tutóia+MA&output=embed"
+    loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+    title="Localização Delta Chalés"></iframe>
 </div>
 
-<p class="footer-note">Voltamos em breve — o paraíso espera por você</p>
+<footer>
+  <div class="ft-inner">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <img src="imagens/logo delta chales logo branca.png" alt="Delta Chalés">
+          <div>
+            <p class="ft-brand-name">Delta Chalés</p>
+            <p class="ft-brand-sub" data-pt="Pousada" data-en="Guesthouse">Pousada</p>
+          </div>
+        </div>
+        <p class="ft-brand-desc" data-pt="Seu refúgio entre o mar e o Delta do Parnaíba, na Rota das Emoções — Tutóia, Maranhão." data-en="Your refuge between the sea and the Parnaíba Delta, on the Route of Emotions — Tutóia, Maranhão.">Seu refúgio entre o mar e o Delta do Parnaíba, na Rota das Emoções — Tutóia, Maranhão.</p>
+      </div>
+      <div class="ft-col">
+        <h4 data-pt="Navegação" data-en="Navigation">Navegação</h4>
+        <ul>
+          <li><a href="#sobre"    data-pt="A Pousada"    data-en="The Guesthouse">A Pousada</a></li>
+          <li><a href="#acomods"  data-pt="Bungalows"    data-en="Bungalows">Bungalows</a></li>
+          <li><a href="#exp"      data-pt="Experiências" data-en="Experiences">Experiências</a></li>
+          <li><a href="#passeios" data-pt="Passeios"     data-en="Tours">Passeios</a></li>
+          <li><a href="#contato"  data-pt="Contato"      data-en="Contact">Contato</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4 data-pt="Contato" data-en="Contact">Contato</h4>
+        <ul>
+          <li><a href="tel:+5586995834198">+55 (86) 99583-4198</a></li>
+          <li><a href="mailto:pousadadeltachales@gmail.com">pousadadeltachales@gmail.com</a></li>
+          <li><a href="https://www.instagram.com/pousada_delta.chales/" target="_blank" rel="noopener noreferrer">@pousada_delta.chales</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span class="ft-copy" data-pt="© 2025 Delta Chalés · Todos os direitos reservados" data-en="© 2025 Delta Chalés · All rights reserved">© 2025 Delta Chalés · Todos os direitos reservados</span>
+      <div class="socials">
+        <a href="https://www.instagram.com/pousada_delta.chales/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://wa.me/5586995834198" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
 
 <script>
-  // Generate stars
-  const starsEl = document.getElementById('stars');
-  for (let i = 0; i < 55; i++) {
-    const s = document.createElement('div');
-    s.className = 'star';
-    const size = Math.random() * 2 + 1;
-    const dur = (Math.random() * 3 + 2) + 's';
-    const del = -(Math.random() * 5) + 's';
-    const op = Math.random() * 0.5 + 0.2;
-    s.style.cssText = `
-      width:${size}px; height:${size}px;
-      top:${Math.random()*90}%;
-      left:${Math.random()*100}%;
-      --d:${dur}; --del:${del}; --op:${op};
-    `;
-    starsEl.appendChild(s);
+/* ── CURSOR ── */
+(function(){
+  if (window.matchMedia("(any-pointer: coarse)").matches) return;
+
+  var curDot = document.getElementById('dot');
+  var curRing = document.getElementById('ring');
+  if(!curDot) return;
+  var mx = -200, my = -200, rx = -200, ry = -200;
+  curDot.style.left  = '-200px'; curDot.style.top  = '-200px';
+  curRing.style.left = '-200px'; curRing.style.top = '-200px';
+
+  document.addEventListener('mousemove', function(e){
+    mx = e.clientX; my = e.clientY;
+    curDot.style.left = mx + 'px';
+    curDot.style.top  = my + 'px';
+  });
+
+  (function tick(){
+    rx += (mx - rx) * 0.11;
+    ry += (my - ry) * 0.11;
+    curRing.style.left = rx + 'px';
+    curRing.style.top  = ry + 'px';
+    requestAnimationFrame(tick);
+  })();
+
+  document.querySelectorAll('a, button, .t-card, .gal-frame, .ac-item, .sobre-img').forEach(function(el){
+    el.addEventListener('mouseenter', function(){ curDot.classList.add('big'); });
+    el.addEventListener('mouseleave', function(){ curDot.classList.remove('big'); });
+  });
+})();
+
+/* ── PROGRESS BAR ── */
+var progBar = document.getElementById('prog');
+window.addEventListener('scroll', function(){
+  var total = document.documentElement.scrollHeight - window.innerHeight;
+  if(total > 0) progBar.style.width = ((window.scrollY / total) * 100) + '%';
+}, { passive: true });
+
+/* ── NAV SCROLL ── */
+var mainNav = document.getElementById('nav');
+window.addEventListener('scroll', function(){
+  mainNav.classList.toggle('inked', window.scrollY > 80);
+}, { passive: true });
+
+/* ── MOBILE MENU ── */
+var mobMenu = document.getElementById('mob');
+document.getElementById('burger').onclick = function(){ mobMenu.classList.add('open'); };
+document.getElementById('mobx').onclick   = function(){ mobMenu.classList.remove('open'); };
+function cmob(){ mobMenu.classList.remove('open'); }
+
+/* ── SCROLL REVEAL ── */
+var revObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.rev, .rev-left, .rev-right').forEach(function(el){ revObs.observe(el); });
+
+/* ── ACCORDION ── */
+function tog(btn){
+  var item = btn.closest('.ac-item');
+  var wasOpen = item.classList.contains('open');
+  
+  document.querySelectorAll('.ac-item.open').forEach(function(i){ 
+    i.classList.remove('open');
+    i.querySelector('.ac-trigger').setAttribute('aria-expanded', 'false');
+  });
+  
+  if(!wasOpen){
+    item.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
   }
+}
+
+/* ── KITE CAROUSEL ── */
+var kiteImgs = document.querySelectorAll('#kcar img');
+var kiteIdx = 0;
+if(kiteImgs.length > 1){
+  setInterval(function(){
+    kiteImgs[kiteIdx].classList.remove('on');
+    kiteIdx = (kiteIdx + 1) % kiteImgs.length;
+    kiteImgs[kiteIdx].classList.add('on');
+  }, 4500);
+}
+
+/* ── GALLERY DRAG SCROLL ── */
+var gStrip   = document.getElementById('gstrip');
+var gDown    = false;
+var gStartX  = 0;
+var gScrollL = 0;
+gStrip.addEventListener('mousedown', function(e){
+  gDown = true; gStrip.classList.add('grab');
+  gStartX  = e.pageX - gStrip.offsetLeft;
+  gScrollL = gStrip.scrollLeft;
+});
+['mouseleave','mouseup'].forEach(function(ev){
+  gStrip.addEventListener(ev, function(){ gDown = false; gStrip.classList.remove('grab'); });
+});
+gStrip.addEventListener('mousemove', function(e){
+  if(!gDown) return;
+  e.preventDefault();
+  gStrip.scrollLeft = gScrollL - (e.pageX - gStrip.offsetLeft - gStartX) * 1.5;
+});
+
+/* ── LANGUAGE SWITCH ── */
+var currentLang = 'pt';
+function setLang(lang){
+  currentLang = lang;
+  
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+
+  document.querySelectorAll('[data-pt]').forEach(function(el){
+    var val = el.dataset[lang] || el.dataset.pt;
+    if(!val) return;
+    
+    if(el.classList.contains('ac-name') || el.tagName === 'SPAN' || el.tagName === 'P' || el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3' || el.tagName === 'A' || el.tagName === 'LI'){
+      el.innerHTML = val;
+    } else {
+      el.textContent = val;
+    }
+  });
+
+  document.querySelectorAll('.l-btn').forEach(function(b){
+    b.classList.toggle('on', b.textContent.trim().toLowerCase() === lang);
+  });
+}
 </script>
 </body>
 </html>
